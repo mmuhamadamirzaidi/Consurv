@@ -46,7 +46,7 @@
                         <div class="row align-items-center">
                             <div class="col">
                                 <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>
-                                <h2 class="mb-0">Total orders</h2>
+                                <h2 class="mb-0">Total Rigs</h2>
                             </div>
                         </div>
                     </div>
@@ -65,7 +65,7 @@
                     <div class="card-header border-0">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h3 class="mb-0">Page visits</h3>
+                                <h3 class="mb-0">Page Visits</h3>
                             </div>
                             <div class="col text-right">
                                 <a href="#!" class="btn btn-sm btn-primary">See all</a>
@@ -86,7 +86,7 @@
                             <tbody>
                                 <tr>
                                     <th scope="row">
-                                        /argon/
+                                        /consurv/
                                     </th>
                                     <td>
                                         4,569
@@ -100,7 +100,7 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">
-                                        /argon/index.html
+                                        /consurv/index.html
                                     </th>
                                     <td>
                                         3,985
@@ -114,7 +114,7 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">
-                                        /argon/charts.html
+                                        /consurv/charts.html
                                     </th>
                                     <td>
                                         3,513
@@ -128,7 +128,7 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">
-                                        /argon/tables.html
+                                        /consurv/tables.html
                                     </th>
                                     <td>
                                         2,050
@@ -142,7 +142,7 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">
-                                        /argon/profile.html
+                                        /consurv/profile.html
                                     </th>
                                     <td>
                                         1,795
@@ -164,7 +164,7 @@
                     <div class="card-header border-0">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h3 class="mb-0">Social traffic</h3>
+                                <h3 class="mb-0">Rigs Ranking</h3>
                             </div>
                             <div class="col text-right">
                                 <a href="#!" class="btn btn-sm btn-primary">See all</a>
@@ -176,25 +176,25 @@
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                                 <tr>
-                                    <th scope="col">Referral</th>
-                                    <th scope="col">Visitors</th>
-                                    <th scope="col"></th>
+                                    <th scope="col">Rig Name</th>
+                                    <th scope="col">Ranking</th>
+                                    <th scope="col">Healthy Rig Status</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <th scope="row">
-                                        Facebook
+                                        Rig A
                                     </th>
                                     <td>
-                                        1,480
+                                        120
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <span class="mr-2">60%</span>
+                                            <span class="mr-2">80%</span>
                                             <div>
                                                 <div class="progress">
-                                                <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                                                <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -202,10 +202,10 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">
-                                        Facebook
+                                        Rig B
                                     </th>
                                     <td>
-                                        5,480
+                                        100
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
@@ -220,17 +220,17 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">
-                                        Google
+                                        Rig C
                                     </th>
                                     <td>
-                                        4,807
+                                        80
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
                                             <span class="mr-2">80%</span>
                                             <div>
                                                 <div class="progress">
-                                                <div class="progress-bar bg-gradient-primary" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
+                                                <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -238,17 +238,17 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">
-                                        Instagram
+                                        Rig D
                                     </th>
                                     <td>
-                                        3,678
+                                        60
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <span class="mr-2">75%</span>
+                                            <span class="mr-2">60%</span>
                                             <div>
                                                 <div class="progress">
-                                                    <div class="progress-bar bg-gradient-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
+                                                    <div class="progress-bar bg-gradient-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -256,17 +256,17 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">
-                                        twitter
+                                        Rig E
                                     </th>
                                     <td>
-                                        2,645
+                                        40
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
                                             <span class="mr-2">30%</span>
                                             <div>
                                                 <div class="progress">
-                                                <div class="progress-bar bg-gradient-warning" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%;"></div>
+                                                <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%;"></div>
                                                 </div>
                                             </div>
                                         </div>
