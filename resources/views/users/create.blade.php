@@ -43,6 +43,28 @@
                                         </span>
                                     @endif
                                 </div>
+
+                                <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-name">{{ __('Phone Number') }}</label>
+                                    <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Phone Number') }}" value="{{ old('name') }}" required autofocus>
+
+                                    @if ($errors->has('name'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('name') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                                <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-name">{{ __('Company') }}</label>
+                                    <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Company') }}" value="{{ old('name') }}" required autofocus>
+
+                                    @if ($errors->has('name'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('name') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+
                                 <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-password">{{ __('Password') }}</label>
                                     <input type="password" name="password" id="input-password" class="form-control form-control-alternative{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('Password') }}" value="" required>
@@ -57,10 +79,141 @@
                                     <label class="form-control-label" for="input-password-confirmation">{{ __('Confirm Password') }}</label>
                                     <input type="password" name="password_confirmation" id="input-password-confirmation" class="form-control form-control-alternative" placeholder="{{ __('Confirm Password') }}" value="" required>
                                 </div>
+                            </div>
+
+                            <h6 class="heading-small text-muted mb-4">{{ __('Health information') }}</h6>
+                            <div class="pl-lg-4 row">
+
+                                    <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4 " >
+                                            <label class="form-control-label" for="input-name">{{ __('Gender') }}</label>
+                                            {{-- <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Weight') }}" value="{{ old('name') }}" required autofocus> --}}
+
+                                            <div class="col-auto row">
+                                                <div class="custom-control custom-radio mb-3 col-md-3">
+                                                    <input name="custom-radio-2" class="custom-control-input" id="customRadio51" type="radio">
+                                                    <label class="custom-control-label" for="customRadio51">Male</label>
+                                                  </div>
+                                                  <div class="custom-control custom-radio mb-3 col-md-3">
+                                                    <input name="custom-radio-2" class="custom-control-input" id="customRadio61" checked="" type="radio">
+                                                    <label class="custom-control-label" for="customRadio61">Female</label>
+                                                  </div>
+
+                                            </div>
+        
+                                            @if ($errors->has('name'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('name') }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
+
+                                        <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}  col-md-4">
+                                                <label class="form-control-label" for="input-password">{{ __('Password') }}</label>
+                                                <input type="password" name="password" id="input-password" class="form-control form-control-alternative{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('Password') }}" value="" required>
+                                                
+                                                @if ($errors->has('password'))
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $errors->first('password') }}</strong>
+                                                    </span>
+                                                @endif
+                                            </div>
+
+                                            <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}  col-md-4 ">
+                                                    <label class="form-control-label" for="input-password">{{ __('Password') }}</label>
+                                                    <input type="password" name="password" id="input-password" class="form-control form-control-alternative{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('Password') }}" value="" required>
+                                                    
+                                                    @if ($errors->has('password'))
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $errors->first('password') }}</strong>
+                                                        </span>
+                                                    @endif
+                                                </div>
+
+                            </div>
+
+                            <div class="pl-lg-4 row">
+
+                                    <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4 " >
+                                            <label class="form-control-label" for="input-name">{{ __('Gender') }}</label>
+                                            {{-- <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Weight') }}" value="{{ old('name') }}" required autofocus> --}}
+
+                                            <div class="col-auto row">
+                                                <div class="custom-control custom-radio mb-3 col-md-3">
+                                                    <input name="custom-radio-2" class="custom-control-input" id="customRadio51" type="radio">
+                                                    <label class="custom-control-label" for="customRadio51">Male</label>
+                                                  </div>
+                                                  <div class="custom-control custom-radio mb-3 col-md-3">
+                                                    <input name="custom-radio-2" class="custom-control-input" id="customRadio61" checked="" type="radio">
+                                                    <label class="custom-control-label" for="customRadio61">Female</label>
+                                                  </div>
+
+                                            </div>
+        
+                                            @if ($errors->has('name'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('name') }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
+
+                                        <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}  col-md-4">
+                                                <label class="form-control-label" for="input-password">{{ __('Password') }}</label>
+                                                <input type="password" name="password" id="input-password" class="form-control form-control-alternative{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('Password') }}" value="" required>
+                                                
+                                                @if ($errors->has('password'))
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $errors->first('password') }}</strong>
+                                                    </span>
+                                                @endif
+                                            </div>
+
+                                            <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}  col-md-4 ">
+                                                    <label class="form-control-label" for="input-password">{{ __('Password') }}</label>
+                                                    <input type="password" name="password" id="input-password" class="form-control form-control-alternative{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('Password') }}" value="" required>
+                                                    
+                                                    @if ($errors->has('password'))
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $errors->first('password') }}</strong>
+                                                        </span>
+                                                    @endif
+                                                </div>
+
+                            </div>
+
+                            <div class="pl-lg-4">
+
+                                <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-name">{{ __('Family History') }}</label>
+                                    <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Family History') }}" value="{{ old('name') }}" required autofocus>
+
+                                    @if ($errors->has('name'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('name') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+
+                                <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-name">{{ __('Medical History') }}</label>
+                                    {{-- <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Medical History') }}" value="{{ old('name') }}" required autofocus> --}}
+
+                                    <form>
+                                        <textarea class="form-control form-control-alternative" rows="3" placeholder="Write a brief about medical history..."></textarea>
+                                      </form>
+
+                                    @if ($errors->has('name'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('name') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                                
 
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-success mt-4">{{ __('Save') }}</button>
                                 </div>
+                            </div>
+
                             </div>
                         </form>
                     </div>
