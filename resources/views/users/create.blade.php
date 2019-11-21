@@ -25,7 +25,7 @@
 
                             <div class="row">
 
-                                    <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-6">
+                                    <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4">
                                             <label class="form-control-label" for="input-name">{{ __('Name') }}</label>
                                             <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Name') }}" value="{{ old('name') }}" required autofocus>
         
@@ -35,7 +35,7 @@
                                                 </span>
                                             @endif
                                         </div>
-                                        <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }} col-md-6">
+                                        <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }} col-md-4">
                                             <label class="form-control-label" for="input-email">{{ __('Email') }}</label>
                                             <input type="email" name="email" id="input-email" class="form-control form-control-alternative{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" value="{{ old('email') }}" required>
         
@@ -45,20 +45,35 @@
                                                 </span>
                                             @endif
                                         </div>
+                                        <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4">
+                                                <label class="form-control-label" for="input-name">{{ __('Phone Number') }}</label>
+                                                <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Phone Number') }}" value="{{ old('name') }}" required autofocus>
+            
+                                                @if ($errors->has('name'))
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $errors->first('name') }}</strong>
+                                                    </span>
+                                                @endif
+                                            </div>
 
                             </div>
 
                             <div class="row">
 
                                     <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-6">
-                                            <label class="form-control-label" for="input-name">{{ __('Phone Number') }}</label>
-                                            <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Phone Number') }}" value="{{ old('name') }}" required autofocus>
-        
-                                            @if ($errors->has('name'))
+                                            <label class="form-control-label" for="input-name">{{ __('Date Of Birth') }}</label>
+                                            {{-- <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Phone Number') }}" value="{{ old('name') }}" required autofocus> --}}
+                                            <div class="input-group input-group-alternative">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                                                    </div>
+                                                    <input class="form-control datepicker" placeholder="Select date" type="text" value="06/20/2018">
+                                                </div>
+                                            {{-- @if ($errors->has('name'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('name') }}</strong>
                                                 </span>
-                                            @endif
+                                            @endif --}}
                                         </div>
                                         <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-6">
                                             <label class="form-control-label" for="input-name">{{ __('Company') }}</label>
@@ -140,26 +155,20 @@
 
                             <div class="row">
 
-                                    <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4 " >
-                                            <label class="form-control-label" for="input-name">{{ __('Smoking Preference') }}</label>
-                                            {{-- <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Weight') }}" value="{{ old('name') }}" required autofocus> --}}
-
-                                            <div class="col-auto row">
-                                                <div class="custom-control custom-radio mb-3 col-md-3">
-                                                    <input name="custom-radio-2" class="custom-control-input" id="customRadio3"  checked="" type="radio">
-                                                    <label class="custom-control-label" for="customRadio3">Yes</label>
-                                                  </div>
-                                                  <div class="custom-control custom-radio mb-3 col-md-3">
-                                                    <input name="custom-radio-2" class="custom-control-input" id="customRadio4" type="radio">
-                                                    <label class="custom-control-label" for="customRadio4">No</label>
-                                                  </div>
-
-                                            </div>
+                                    <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4">
+                                            <label class="form-control-label" for="input-name">{{ __('HDL-C (mmol/L)') }}</label>
+                                            <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Cholesterol (mmol/L)') }}" value="{{ old('name') }}" required autofocus>
+        
+                                            @if ($errors->has('name'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('name') }}</strong>
+                                                </span>
+                                            @endif
                                         </div>
 
                                         <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4">
-                                                <label class="form-control-label" for="input-name">{{ __('Blood Pressure') }}</label>
-                                                <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Blood Pressure') }}" value="{{ old('name') }}" required autofocus>
+                                                <label class="form-control-label" for="input-name">{{ __('Systolic Blood Pressure (mmHg)') }}</label>
+                                                <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Blood Pressure (mmHg)') }}" value="{{ old('name') }}" required autofocus>
             
                                                 @if ($errors->has('name'))
                                                     <span class="invalid-feedback" role="alert">
@@ -168,18 +177,75 @@
                                                 @endif
                                             </div>
 
-                                            <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4">
-                                                    <label class="form-control-label" for="input-name">{{ __('Cholesterol') }}</label>
-                                                    <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Cholesterol') }}" value="{{ old('name') }}" required autofocus>
-                
-                                                    @if ($errors->has('name'))
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $errors->first('name') }}</strong>
-                                                        </span>
-                                                    @endif
+                                           
+
+                                                <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4 " >
+                                                    <label class="form-control-label" for="input-name">{{ __('Treatment') }}</label>
+                                                    {{-- <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Weight') }}" value="{{ old('name') }}" required autofocus> --}}
+        
+                                                    <div class="col-auto row">
+                                                        <div class="custom-control custom-radio mb-3 col-md-3">
+                                                            <input name="custom-radio-2" class="custom-control-input" id="customRadio3"  checked="" type="radio">
+                                                            <label class="custom-control-label" for="customRadio3">Yes</label>
+                                                          </div>
+                                                          <div class="custom-control custom-radio mb-3 col-md-3">
+                                                            <input name="custom-radio-2" class="custom-control-input" id="customRadio4"type="radio">
+                                                            <label class="custom-control-label" for="customRadio4">No</label>
+                                                          </div>
+        
+                                                    </div>
                                                 </div>
 
                             </div>
+
+                            <div class="row">
+
+                                <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4">
+                                    <label class="form-control-label" for="input-name">{{ __('Total Cholesterol (mg/dL)') }}</label>
+                                    <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Cholesterol (mmol/L)') }}" value="{{ old('name') }}" required autofocus>
+
+                                    @if ($errors->has('name'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('name') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+
+                                    <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4 " >
+                                        <label class="form-control-label" for="input-name">{{ __('Diabetes') }}</label>
+                                        {{-- <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Weight') }}" value="{{ old('name') }}" required autofocus> --}}
+
+                                        <div class="col-auto row">
+                                            <div class="custom-control custom-radio mb-3 col-md-3">
+                                                <input name="custom-radio-3" class="custom-control-input" id="customRadio5"  checked="" type="radio">
+                                                <label class="custom-control-label" for="customRadio5">Yes</label>
+                                              </div>
+                                              <div class="custom-control custom-radio mb-3 col-md-3">
+                                                <input name="custom-radio-3" class="custom-control-input" id="customRadio6"type="radio">
+                                                <label class="custom-control-label" for="customRadio6">No</label>
+                                              </div>
+
+                                        </div>
+                                    </div>
+
+                                        <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4 " >
+                                            <label class="form-control-label" for="input-name">{{ __('Smoker') }}</label>
+                                            {{-- <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Weight') }}" value="{{ old('name') }}" required autofocus> --}}
+
+                                            <div class="col-auto row">
+                                                <div class="custom-control custom-radio mb-3 col-md-3">
+                                                    <input name="custom-radio-4" class="custom-control-input" id="customRadio7"   type="radio">
+                                                    <label class="custom-control-label" for="customRadio7">Yes</label>
+                                                  </div>
+                                                  <div class="custom-control custom-radio mb-3 col-md-3">
+                                                    <input name="custom-radio-4" class="custom-control-input" id="customRadio8"type="radio">
+                                                    <label class="custom-control-label" for="customRadio8">No</label>
+                                                  </div>
+
+                                            </div>
+                                        </div>
+
+                    </div>
 
                             <div>
 
