@@ -60,14 +60,15 @@
 
                             <div class="row">
 
-                                    <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-6">
+                                    <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4">
                                             <label class="form-control-label" for="input-name">{{ __('Date Of Birth') }}</label>
                                             {{-- <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Phone Number') }}" value="{{ old('name') }}" required autofocus> --}}
                                             <div class="input-group input-group-alternative">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                                                     </div>
-                                                    <input class="form-control datepicker" placeholder="Select date" type="text" value="06/20/2018">
+                                                    <input class="form-control datepicker" placeholder="Select date" type="text" >
+                                                    {{-- value="06/20/2018" --}}
                                                 </div>
                                             {{-- @if ($errors->has('name'))
                                                 <span class="invalid-feedback" role="alert">
@@ -75,7 +76,7 @@
                                                 </span>
                                             @endif --}}
                                         </div>
-                                        <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-6">
+                                        {{-- <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-6">
                                             <label class="form-control-label" for="input-name">{{ __('Company') }}</label>
                                             <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Company') }}" value="{{ old('name') }}" required autofocus>
         
@@ -84,16 +85,54 @@
                                                     <strong>{{ $errors->first('name') }}</strong>
                                                 </span>
                                             @endif
-                                        </div>
+                                        </div> --}}
+
+                                        <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4">
+                                            <label class="form-control-label" for="input-role">Company</label>
+                                            <select name="role_id" id="input-role" class="form-control" placeholder="Company" required>
+                                                <option value="">Select company</option>
+                                                                                            <option value="10" >Company A</option>
+                                                                                            <option value="11" >Company B</option>
+                                                                                            <option value="12" >Company C</option>
+                                                                                            <option value="13" >Company D</option>
+                                                                                            <option value="14" >Company E</option>
+                                                                                            <option value="15" >Company F</option>
+                                                                                    </select>
+        
+                                          </div>
+
+                                       <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4">
+                                                                                <label class="form-control-label" for="input-role">Rig</label>
+                                                                                <select name="role_id" id="input-role" class="form-control" placeholder="Rig" required>
+                                                                                    <option value="">Select rig</option>
+                                                                                          <option value="90" >Rig A</option>
+                                                                                          <option value="91" >Rig B</option>
+                                                                                          <option value="92" >Rig C</option>
+                                                                                          <option value="93" >Rig D</option>
+                                                                                          <option value="94" >Rig E</option>
+                                                                                          
+                                            </select>
+                                            
+                                      </div>
+
 
                             </div>
 
                             <div class="row">
                                 
 
-                                
+                                <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4">
+                                    <label class="form-control-label" for="input-role">Role</label>
+                                    <select name="role_id" id="input-role" class="form-control" placeholder="Role" required>
+                                        <option value="">Select role</option>
+                                              <option value="80" >Administrator</option>
+                                              <option value="81" >Doctor</option>
+                                              <option value="82" >Patient</option>
+                                              
+                                </select>
+                            </div>
 
-                                <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }} col-md-6">
+                                <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }} col-md-4">
                                     <label class="form-control-label" for="input-password">{{ __('Password') }}</label>
                                     <input type="password" name="password" id="input-password" class="form-control form-control-alternative{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('Password') }}" value="" required>
                                     
@@ -103,7 +142,7 @@
                                         </span>
                                     @endif
                                 </div>
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-4">
                                     <label class="form-control-label " for="input-password-confirmation">{{ __('Confirm Password') }}</label>
                                     <input type="password" name="password_confirmation" id="input-password-confirmation" class="form-control form-control-alternative" placeholder="{{ __('Confirm Password') }}" value="" required>
                                 </div>

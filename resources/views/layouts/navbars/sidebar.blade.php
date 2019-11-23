@@ -83,6 +83,7 @@
                         <i class="ni ni-tv-2 text-primary"></i> {{ __('Dashboard') }}
                     </a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
                         <i class="ni ni-circle-08" style="color: #f4645f;"></i>
@@ -99,6 +100,23 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('user.index') }}">
                                     {{ __('User Management') }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
+                        <i class="ni ni-building text-green"></i>
+                        <span class="nav-link-text text-green">{{ __('Company') }}</span>
+                    </a>
+
+                    <div class="collapse show" id="navbar-examples">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('profile.edit') }}">
+                                    {{ __('Company Management') }}
                                 </a>
                             </li>
                         </ul>
@@ -124,19 +142,23 @@
                     <a class="nav-link" href="#">
                         <i class="ni ni-circle-08 text-pink"></i> {{ __('Register') }}
                     </a>
-                </li> --}}
-                {{-- <li class="nav-item mb-5" style="position: absolute; bottom: 0;">
+                </li> 
+                <li class="nav-item mb-5" style="position: absolute; bottom: 0;"> 
                     <a class="nav-link" href="https://www.creative-tim.com/product/argon-dashboard-pro-laravel" target="_blank">
                         <i class="ni ni-cloud-download-95"></i> Upgrade to PRO
                     </a>
                 </li> --}}
+
             </ul>
+
             <!-- Divider -->
-            {{-- <hr class="my-3">
+            {{-- <hr class="my-3"> --}}
+
             <!-- Heading -->
-            <h6 class="navbar-heading text-muted">Documentation</h6>
+            {{-- <h6 class="navbar-heading text-muted">Documentation</h6> --}}
+            
             <!-- Navigation -->
-            <ul class="navbar-nav mb-md-3">
+            {{-- <ul class="navbar-nav mb-md-3">
                 <li class="nav-item">
                     <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html">
                         <i class="ni ni-spaceship"></i> Getting started
