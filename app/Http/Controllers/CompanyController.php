@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Rig;
 use App\Company;
+use App\Http\Requests\CompanyStore;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
@@ -35,9 +36,14 @@ class CompanyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CompanyStore $request)
     {
-        //
+        Company::create([
+            'name' => $request->name,
+            'address' => $request->address,
+        ]);
+
+        return redirect()->route('company.index')->withStatus('Company has been added.');
     }
 
     /**

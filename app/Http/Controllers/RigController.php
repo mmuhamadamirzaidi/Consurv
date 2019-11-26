@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RigStore;
 use App\Rig;
 use Illuminate\Http\Request;
 
@@ -33,9 +34,14 @@ class RigController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RigStore $request)
     {
-        //
+        Rig::create([
+            'company_id' => $request->company_id,
+            'name' => $request->name,
+        ]);
+
+        return redirect()->route('company.show', $request->company_id)->withSuccess('Rig has been added.');
     }
 
     /**
