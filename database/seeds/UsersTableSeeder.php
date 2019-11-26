@@ -19,6 +19,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'Admin Consurv',
             'email' => 'admin@consurv.com',
             'password' => Hash::make('admin@123'),
+            'role' => 'Admin',
         ]);
     }
 }

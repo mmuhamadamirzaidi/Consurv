@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('password')->nullable();
+            $table->enum('role', ['Admin', 'Doctor', 'Patient']);
             $table->enum('gender', ['F', 'M'])->nullable();
 
             $table->string('phone_number', 17)->nullable();

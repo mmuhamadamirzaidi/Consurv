@@ -14,7 +14,7 @@
                 <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="media align-items-center">
                         <span class="avatar avatar-sm rounded-circle">
-                        <img alt="Image placeholder" src="{{ asset('argon') }}/img/theme/team-1-800x800.jpg">
+                            <img alt="Image placeholder" src="{{ asset('argon') }}/img/theme/team-1-800x800.jpg">
                         </span>
                     </div>
                 </a>
@@ -107,15 +107,15 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
+                    <a class="nav-link" href="#company" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="company">
                         <i class="ni ni-building text-green"></i>
                         <span class="nav-link-text text-green">{{ __('Company') }}</span>
                     </a>
 
-                    <div class="collapse show" id="navbar-examples">
+                    <div class="collapse" id="company">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('profile.edit') }}">
+                                <a class="nav-link" href="{{ route('company.index') }}">
                                     {{ __('Company Management') }}
                                 </a>
                             </li>
@@ -126,7 +126,7 @@
                 {{-- <li class="nav-item">
                     <a class="nav-link" href="#">
                         <i class="ni ni-planet text-blue"></i> {{ __('Icons') }}
-                    </a>
+                </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">
@@ -142,8 +142,8 @@
                     <a class="nav-link" href="#">
                         <i class="ni ni-circle-08 text-pink"></i> {{ __('Register') }}
                     </a>
-                </li> 
-                <li class="nav-item mb-5" style="position: absolute; bottom: 0;"> 
+                </li>
+                <li class="nav-item mb-5" style="position: absolute; bottom: 0;">
                     <a class="nav-link" href="https://www.creative-tim.com/product/argon-dashboard-pro-laravel" target="_blank">
                         <i class="ni ni-cloud-download-95"></i> Upgrade to PRO
                     </a>
@@ -156,7 +156,7 @@
 
             <!-- Heading -->
             {{-- <h6 class="navbar-heading text-muted">Documentation</h6> --}}
-            
+
             <!-- Navigation -->
             {{-- <ul class="navbar-nav mb-md-3">
                 <li class="nav-item">

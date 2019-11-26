@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Rig;
 use App\Company;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        //
+        $companies = Company::paginate(20);
+        return view('company.index')->with(compact(['companies']));
     }
 
     /**
@@ -46,7 +48,8 @@ class CompanyController extends Controller
      */
     public function show(Company $company)
     {
-        //
+        $rigs = Rig::where('company_id', $company->id)->paginate(20);
+        return view('company.show')->with(compact('company', 'rigs'));
     }
 
     /**

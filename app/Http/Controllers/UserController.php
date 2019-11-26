@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Company;
 use Carbon\Carbon;
 use App\HealthInformation;
 use App\Http\Requests\UserRequest;
@@ -28,7 +29,10 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        $companies = Company::all();
+        return view('users.create')->with(compact([
+            'companies',
+        ]));
     }
 
     /**
@@ -45,6 +49,7 @@ class UserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role' => $request->role,
             'gender' => $request->gender,
             'phone_number' => $request->phone_number,
             'date_of_birth' => $dob,
@@ -77,7 +82,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('users.edit', compact('user'));
+        $companies = Company::all();
+
+        return view('users.edit', compact('user', 'companies'));
     }
 
     /**
@@ -89,14 +96,48 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, User  $user)
     {
-        $user->update(
-            $request->merge(['password' => Hash::make($request->get('password'))])
-                ->except([$request->get('password') ? '' : 'password']
-        ));
+        $dob = Carbon::createFromFormat('m/d/Y', $request->date_of_birth)->format('Y-m-d');
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'role' => $request->role,
+            'gender' => $request->gender,
+            'phone_number' => $request->phone_number,
+            'date_of_birth' => $dob,
+            'company_id' => $request->company_id,
+            'rig_id' => $request->rig_id,
+        ]);
+
+        if ($request->password) {
+            $user->update([
+                'password' => Hash::make($request->password),
+            ]);
+        }
+
+        if ($user->is_patient) {
+            HealthInformation::updateOrCreate([
+                'patient_id' => $user->id,
+            ], [
+                'weight' => $request->weight,
+                'height' => $request->height,
+                'hdlc' => $request->hdlc,
+                'blood_pressure' => $request->blood_pressure,
+                'treatment' => $request->treatment,
+                'total_cholesterol' => $request->total_cholesterol,
+                'diabetes' => $request->diabetes,
+                'smoker' => $request->smoker,
+                'family_history' => $request->family_history,
+                'medical_history' => $request->medical_history,
+            ]);
+        }
 
         return redirect()->route('user.index')->withStatus(__('User successfully updated.'));
     }
 
+    public function show(User $user)
+    {
+        return view('users.show')->with(compact('user'));
+    }
     /**
      * Remove the specified user from storage
      *

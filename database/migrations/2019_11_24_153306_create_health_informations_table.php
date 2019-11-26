@@ -39,7 +39,7 @@ class CreateHealthInformationsTable extends Migration
             $table->tinyInteger('risk_point_smoker')->nullable();
             $table->tinyInteger('risk_point_cvd')->nullable();
             $table->tinyInteger('heart_age')->nullable();
-            $table->tinyInteger('risk_level')->nullable();
+            $table->tinyInteger('risk_level')->nullable()->comment('1:low 2:intermediate 3:high');
             
             $table->timestamps();
             $table->softDeletes();

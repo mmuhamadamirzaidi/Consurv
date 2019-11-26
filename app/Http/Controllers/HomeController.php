@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\HealthInformation;
+
 class HomeController extends Controller
 {
     /**
@@ -21,6 +23,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        $totalLow = HealthInformation::where('risk_level', 1)->count();
+        $totalIntermediate = HealthInformation::where('risk_level', 2)->count();
+        $totalHigh = HealthInformation::where('risk_level', 3)->count();
+        return view('dashboard')->with(compact([
+            'totalLow', 'totalIntermediate', 'totalHigh',
+        ]));
     }
 }

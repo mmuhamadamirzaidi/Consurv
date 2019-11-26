@@ -65,7 +65,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                                     </div>
-                                    <input class="form-control datepicker" name="date_of_birth" placeholder="Select date" type="text" value="{{ $user->date_of_birth->format('m/d/Y') }}">
+                                    <input class="form-control datepicker" name="date_of_birth" placeholder="Select date" type="text" value="{{ optional($user->date_of_birth)->format('m/d/Y') }}">
                                     {{-- value="06/20/2018" --}}
                                 </div>
                                 {{-- @if ($errors->has('name'))
@@ -114,12 +114,13 @@
                             <label class="form-control-label" for="input-role">Role</label>
                             <select name="role" id="input-role" class="form-control" placeholder="Role" required>
                                 <option value="">Select role</option>
-                                <option value="80">Administrator</option>
-                                <option value="81">Doctor</option>
-                                <option value="82">Patient</option>
+                                <option {{ $user->role == 'Admin' ? 'selected' : '' }} value="Admin">Administrator</option>
+                                <option {{ $user->role == 'Doctor' ? 'selected' : '' }} value="Doctor">Doctor</option>
+                                <option {{ $user->role == 'Patient' ? 'selected' : '' }} value="Patient">Patient</option>
                             </select>
                         </div>
 
+                        @if ($user->is_patient)
                         <div class="col-md-12">
                             <h6 class="heading-small text-muted mb-4">{{ __('Health information') }}</h6>
                         </div>
@@ -275,8 +276,12 @@
                             <h5>Diabetes Risk Point : {{ optional($user->healthInformation)->risk_point_diabetes }}</h5>
                             <h5>Smoker Risk Point : {{ optional($user->healthInformation)->risk_point_smoker }}</h5>
                             <t5>Total Point: {{ optional($user->healthInformation)->total_points }}</h5>
+                            <t5>CVD Risk Point: {{ optional($user->healthInformation)->risk_point_cvd }}</h5>
+                            <t5>Risk Level: {{ optional($user->healthInformation)->risk_level_text }}</h5>
+                            
 
                         </div>
+                        @endif
                         <div class="col-md-12">
                             <div class="text-center">
                                 <button type="submit" class="btn btn-success mt-4">{{ __('Save') }}</button>

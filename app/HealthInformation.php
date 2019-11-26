@@ -18,4 +18,17 @@ class HealthInformation extends Model
     {
         return $this->belongsTo('App\User', 'patient_id');
     }
+
+    public function getRiskLevelTextAttribute()
+    {
+        if ($this->risk_level == 1) {
+            return 'Low';
+        } else if ($this->risk_level == 2) {
+            return 'Intermediate';
+        } else if ($this->risk_level == 3) {
+            return 'High';
+        } else {
+            return $this->risk_level;
+        }
+    }
 }

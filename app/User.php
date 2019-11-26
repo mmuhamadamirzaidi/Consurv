@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'gender', 'phone_number', 'date_of_birth', 'company_id', 'rig_id', 
+        'name', 'email', 'password', 'role', 'gender', 'phone_number', 'date_of_birth', 'company_id', 'rig_id', 
     ];
 
     protected $dates = [
@@ -50,5 +50,20 @@ class User extends Authenticatable
     public function healthInformation()
     {
         return $this->hasOne('App\HealthInformation', 'patient_id', 'id');
+    }
+
+    public function getIsAdminAttribute()
+    {
+        return $this->role == 'Admin';
+    }
+
+    public function getIsDoctorAttribute()
+    {
+        return $this->role == 'Doctor';
+    }
+
+    public function getIsPatientAttribute()
+    {
+        return $this->role == 'Patient';
     }
 }

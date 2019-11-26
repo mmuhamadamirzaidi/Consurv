@@ -82,4 +82,13 @@ class RigController extends Controller
     {
         //
     }
+
+    public function rigsByCompany(Request $request)
+    {
+        $rigs = Rig::where('company_id', $request->company_id)->get();
+
+        return response()->json([
+            'rigs' => $rigs,
+        ], 200);
+    }
 }

@@ -12,4 +12,9 @@ class Company extends Model
     protected $fillable = [
         'name', 'address',
     ];
+
+    public function rigs()
+    {
+        return $this->hasMany('App\Rig');
+    }
 }

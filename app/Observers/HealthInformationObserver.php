@@ -20,6 +20,9 @@ class HealthInformationObserver
         $risk_point_blood_pressure = $this->getRiskPointBloodPressure($healthInformation);
         $risk_point_diabetes = $this->getRiskPointDiabetes($healthInformation);
         $risk_point_smoker = $this->getRiskPointSmoker($healthInformation);
+        $total_points = $risk_point_age + $risk_point_hdlc + $risk_point_cholesterol + $risk_point_blood_pressure + $risk_point_diabetes + $risk_point_smoker;
+        $risk_point_cvd = $this->getRiskPointCvd($healthInformation, $total_points);
+        $risk_level = $this->getRiskLevel($risk_point_cvd);
 
         $healthInformation->update([
             'risk_point_age' => $risk_point_age,
@@ -28,7 +31,9 @@ class HealthInformationObserver
             'risk_point_blood_pressure' => $risk_point_blood_pressure,
             'risk_point_diabetes' => $risk_point_diabetes,
             'risk_point_smoker' => $risk_point_smoker,
-            'total_points' => $risk_point_age + $risk_point_hdlc + $risk_point_cholesterol + $risk_point_blood_pressure + $risk_point_diabetes + $risk_point_smoker,
+            'total_points' => $total_points,
+            'risk_point_cvd' => $risk_point_cvd,
+            'risk_level' => $risk_level,
         ]);
     }
 
@@ -40,7 +45,27 @@ class HealthInformationObserver
      */
     public function updated(HealthInformation $healthInformation)
     {
-        //
+        $risk_point_age = $this->getRiskPointAge($healthInformation);
+        $risk_point_hdlc = $this->getRiskPointHdlc($healthInformation->hldc);
+        $risk_point_cholesterol = $this->getRiskPointCholesterol($healthInformation);
+        $risk_point_blood_pressure = $this->getRiskPointBloodPressure($healthInformation);
+        $risk_point_diabetes = $this->getRiskPointDiabetes($healthInformation);
+        $risk_point_smoker = $this->getRiskPointSmoker($healthInformation);
+        $total_points = $risk_point_age + $risk_point_hdlc + $risk_point_cholesterol + $risk_point_blood_pressure + $risk_point_diabetes + $risk_point_smoker;
+        $risk_point_cvd = $this->getRiskPointCvd($healthInformation, $total_points);
+        $risk_level = $this->getRiskLevel($risk_point_cvd);
+
+        $healthInformation->update([
+            'risk_point_age' => $risk_point_age,
+            'risk_point_hdlc' => $risk_point_hdlc,
+            'risk_point_cholesterol' => $risk_point_cholesterol,
+            'risk_point_blood_pressure' => $risk_point_blood_pressure,
+            'risk_point_diabetes' => $risk_point_diabetes,
+            'risk_point_smoker' => $risk_point_smoker,
+            'total_points' => $total_points,
+            'risk_point_cvd' => $risk_point_cvd,
+            'risk_level' => $risk_level,
+        ]);
     }
 
     /**
@@ -285,9 +310,120 @@ class HealthInformationObserver
     public function getRiskPointCvd(HealthInformation $healthInformation, $total_point)
     {
         if ($healthInformation->patient->is_male) {
-
+            if ($total_point <= -3) {
+                return 1;
+            } else if ($total_point == -2) {
+                return 1.1;
+            } else if ($total_point == -1) {
+                return 1.4;
+            } else if ($total_point == 0) {
+                return 1.5;
+            } else if ($total_point == 1) {
+                return 1.9;
+            } else if ($total_point == 2) {
+                return 2.3;
+            } else if ($total_point == 3) {
+                return 2.8;
+            } else if ($total_point == 4) {
+                return 3.3;
+            } else if ($total_point == 5) {
+                return 3.9;
+            } else if ($total_point == 6) {
+                return 4.7;
+            } else if ($total_point == 7) {
+                return 5.6;
+            } else if ($total_point == 8) {
+                return 6.7;
+            } else if ($total_point == 9) {
+                return 7.9;
+            } else if ($total_point == 10) {
+                return 9.4;
+            } else if ($total_point == 11) {
+                return 11.2;
+            } else if ($total_point == 12) {
+                return 13.3;
+            } else if ($total_point == 13) {
+                return 15.6;
+            } else if ($total_point == 14) {
+                return 18.4;
+            } else if ($total_point == 15) {
+                return 21.6;
+            } else if ($total_point == 16) {
+                return 25.3;
+            } else if ($total_point == 17) {
+                return 29.4;
+            } else if ($total_point == 18) {
+                return 30;
+            } else if ($total_point == 19) {
+                return 30;
+            } else if ($total_point == 20) {
+                return 30;
+            } else if ($total_point >= 21) {
+                return 30;
+            }
         } else {
+            if ($total_point <= -3) {
+                return 1;
+            } else if ($total_point == -2) {
+                return 1;
+            } else if ($total_point == -1) {
+                return 1;
+            } else if ($total_point == 0) {
+                return 1.2;
+            } else if ($total_point == 1) {
+                return 1.5;
+            } else if ($total_point == 2) {
+                return 1.7;
+            } else if ($total_point == 3) {
+                return 2.0;
+            } else if ($total_point == 4) {
+                return 2.4;
+            } else if ($total_point == 5) {
+                return 2.8;
+            } else if ($total_point == 6) {
+                return 3.3;
+            } else if ($total_point == 7) {
+                return 3.9;
+            } else if ($total_point == 8) {
+                return 4.5;
+            } else if ($total_point == 9) {
+                return 5.3;
+            } else if ($total_point == 10) {
+                return 6.3;
+            } else if ($total_point == 11) {
+                return 7.3;
+            } else if ($total_point == 12) {
+                return 8.6;
+            } else if ($total_point == 13) {
+                return 10;
+            } else if ($total_point == 14) {
+                return 11.7;
+            } else if ($total_point == 15) {
+                return 13.7;
+            } else if ($total_point == 16) {
+                return 15.9;
+            } else if ($total_point == 17) {
+                return 18.51;
+            } else if ($total_point == 18) {
+                return 21.5;
+            } else if ($total_point == 19) {
+                return 24.8;
+            } else if ($total_point == 20) {
+                return 27.5;
+            } else if ($total_point >= 21) {
+                return 30;
+            }
+        }
+    }
 
+    public function getRiskLevel($risk_point_cvd)
+    {
+        if ($risk_point_cvd < 10) {
+            return 1;
+        } else if ($risk_point_cvd < 20) {
+            return 2;
+        } else {
+            return 3;
         }
     }
 }

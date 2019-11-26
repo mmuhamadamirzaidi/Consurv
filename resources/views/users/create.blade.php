@@ -86,22 +86,19 @@
                         </div> --}}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4">
-                            <label class="form-control-label" for="input-role">Company</label>
-                            <select name="role_id" id="input-role" class="form-control" placeholder="Company" required>
-                                <option value="">Select company</option>
-                                <option value="1">Company A</option>
-                                <option value="2">Company B</option>
+                            <label class="form-control-label" for="company_id">Company</label>
+                            <select name="company_id" id="company_id" class="form-control" placeholder="Company" required>
+                                <option value="">Select Company</option>
+                                @foreach ($companies as $company)
+                                <option value="{{ $company->id }}">{{ $company->name }}</option>
+                                @endforeach
                             </select>
-
                         </div>
 
                         <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4">
-                            <label class="form-control-label" for="input-role">Rig</label>
-                            <select name="role_id" id="input-role" class="form-control" placeholder="Rig" required>
-                                <option value="">Select rig</option>
-                                <option value="1">Rig A</option>
-                                <option value="2">Rig B</option>
-                                <option value="3">Rig B</option>
+                            <label class="form-control-label" for="rig_id">Rig</label>
+                            <select name="rig_id" id="rig_id" class="form-control" placeholder="Rig" required>
+                                <option value="">Select Rig</option>
                             </select>
                         </div>
 
@@ -111,12 +108,12 @@
 
 
                         <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4">
-                            <label class="form-control-label" for="input-role">Role</label>
-                            <select name="role" id="input-role" class="form-control" placeholder="Role" required>
+                            <label class="form-control-label" for="role">Role</label>
+                            <select name="role" id="role" class="form-control" placeholder="Role" required>
                                 <option value="">Select role</option>
-                                <option value="80">Administrator</option>
-                                <option value="81">Doctor</option>
-                                <option value="82">Patient</option>
+                                <option value="Admin">Administrator</option>
+                                <option value="Doctor">Doctor</option>
+                                <option value="Patient">Patient</option>
                             </select>
                         </div>
 
@@ -135,151 +132,155 @@
                             <input type="password" name="password_confirmation" id="input-password-confirmation" class="form-control form-control-alternative" placeholder="{{ __('Confirm Password') }}" value="" required>
                         </div>
 
-                        <div class="col-md-12">
-                            <h6 class="heading-small text-muted mb-4">{{ __('Health information') }}</h6>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4 ">
-                            <label class="form-control-label" for="input-name">{{ __('Gender') }}</label>
-                            {{-- <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Weight') }}" value="{{ old('name') }}" required autofocus> --}}
-
-                            <div class="col-auto row">
-                                <div class="custom-control custom-radio mb-3 col-md-3">
-                                    <input name="gender" value="M" class="custom-control-input" id="customRadio1" checked="" type="radio">
-                                    <label class="custom-control-label" for="customRadio1">Male</label>
-                                </div>
-                                <div class="custom-control custom-radio mb-3 col-md-3">
-                                    <input name="gender" value="F" class="custom-control-input" id="customRadio2" type="radio">
-                                    <label class="custom-control-label" for="customRadio2">Female</label>
+                        <div id="health_information" class="col-md-12 form-group m-0" style="display:none"> 
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h6 class="heading-small text-muted mb-4">{{ __('Health information') }}</h6>
                                 </div>
 
+                                <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4 ">
+                                    <label class="form-control-label" for="input-name">{{ __('Gender') }}</label>
+                                    {{-- <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Weight') }}" value="{{ old('name') }}" required autofocus> --}}
+
+                                    <div class="col-auto row">
+                                        <div class="custom-control custom-radio mb-3 col-md-3">
+                                            <input name="gender" value="M" class="custom-control-input" id="customRadio1" type="radio">
+                                            <label class="custom-control-label" for="customRadio1">Male</label>
+                                        </div>
+                                        <div class="custom-control custom-radio mb-3 col-md-3">
+                                            <input name="gender" value="F" class="custom-control-input" id="customRadio2" type="radio">
+                                            <label class="custom-control-label" for="customRadio2">Female</label>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4">
+                                    <label class="form-control-label" for="input-name">{{ __('Weight (kg)') }}</label>
+                                    <input type="text" name="weight" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Weight (kg)') }}" value="{{ old('name') }}" required autofocus>
+
+                                    @if ($errors->has('name'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+
+                                <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4">
+                                    <label class="form-control-label" for="input-name">{{ __('Height (cm)') }}</label>
+                                    <input type="text" name="height" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Height (cm)') }}" value="{{ old('name') }}" required autofocus>
+
+                                    @if ($errors->has('name'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+
+
+
+                                <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4">
+                                    <label class="form-control-label" for="input-name">{{ __('HDL-C (mmol/L)') }}</label>
+                                    <input type="text" name="hdlc" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Cholesterol (mmol/L)') }}" value="{{ old('name') }}" required autofocus>
+
+                                    @if ($errors->has('name'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+
+                                <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4">
+                                    <label class="form-control-label" for="input-name">{{ __('Systolic Blood Pressure (mmHg)') }}</label>
+                                    <input type="text" name="blood_pressure" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Blood Pressure (mmHg)') }}" value="{{ old('name') }}" required autofocus>
+
+                                    @if ($errors->has('name'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+
+
+
+                                <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4 ">
+                                    <label class="form-control-label" for="input-name">{{ __('Treatment') }}</label>
+                                    {{-- <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Weight') }}" value="{{ old('name') }}" required autofocus> --}}
+
+                                    <div class="col-auto row">
+                                        <div class="custom-control custom-radio mb-3 col-md-3">
+                                            <input name="treatment" value="1" class="custom-control-input" id="customRadio3" type="radio">
+                                            <label class="custom-control-label" for="customRadio3">Yes</label>
+                                        </div>
+                                        <div class="custom-control custom-radio mb-3 col-md-3">
+                                            <input name="treatment" value="0" class="custom-control-input" id="customRadio4" type="radio">
+                                            <label class="custom-control-label" for="customRadio4">No</label>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4">
+                                    <label class="form-control-label" for="input-name">{{ __('Total Cholesterol (mg/dL)') }}</label>
+                                    <input type="text" name="total_cholesterol" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Cholesterol (mmol/L)') }}" value="{{ old('name') }}" required autofocus>
+
+                                    @if ($errors->has('name'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+
+                                <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4 ">
+                                    <label class="form-control-label" for="input-name">{{ __('Diabetes') }}</label>
+                                    {{-- <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Weight') }}" value="{{ old('name') }}" required autofocus> --}}
+
+                                    <div class="col-auto row">
+                                        <div class="custom-control custom-radio mb-3 col-md-3">
+                                            <input name="diabetes" value="1" class="custom-control-input" id="customRadio5" type="radio">
+                                            <label class="custom-control-label" for="customRadio5">Yes</label>
+                                        </div>
+                                        <div class="custom-control custom-radio mb-3 col-md-3">
+                                            <input name="diabetes" value="0" class="custom-control-input" id="customRadio6" type="radio">
+                                            <label class="custom-control-label" for="customRadio6">No</label>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4 ">
+                                    <label class="form-control-label" for="input-name">{{ __('Smoker') }}</label>
+                                    {{-- <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Weight') }}" value="{{ old('name') }}" required autofocus> --}}
+
+                                    <div class="col-auto row">
+                                        <div class="custom-control custom-radio mb-3 col-md-3">
+                                            <input name="smoker" value="1" class="custom-control-input" id="customRadio7" type="radio">
+                                            <label class="custom-control-label" for="customRadio7">Yes</label>
+                                        </div>
+                                        <div class="custom-control custom-radio mb-3 col-md-3">
+                                            <input name="smoker" value="0" class="custom-control-input" id="customRadio8" type="radio">
+                                            <label class="custom-control-label" for="customRadio8">No</label>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4">
+                                    <label class="form-control-label" for="input-name">{{ __('Family History') }}</label>
+                                    <textarea name="family_history" class="form-control form-control-alternative" rows="3" placeholder="Write a brief about family history..."></textarea>
+                                </div>
+
+                                <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4">
+                                    <label class="form-control-label" for="input-name">{{ __('Medical History') }}</label>
+                                    <textarea name="medical_history" class="form-control form-control-alternative" rows="3" placeholder="Write a brief about medical history..."></textarea>
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4">
-                            <label class="form-control-label" for="input-name">{{ __('Weight (kg)') }}</label>
-                            <input type="text" name="weight" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Weight (kg)') }}" value="{{ old('name') }}" required autofocus>
-
-                            @if ($errors->has('name'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('name') }}</strong>
-                            </span>
-                            @endif
-                        </div>
-
-                        <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4">
-                            <label class="form-control-label" for="input-name">{{ __('Height (cm)') }}</label>
-                            <input type="text" name="height" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Height (cm)') }}" value="{{ old('name') }}" required autofocus>
-
-                            @if ($errors->has('name'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('name') }}</strong>
-                            </span>
-                            @endif
-                        </div>
-
-
-
-                        <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4">
-                            <label class="form-control-label" for="input-name">{{ __('HDL-C (mmol/L)') }}</label>
-                            <input type="text" name="hdlc" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Cholesterol (mmol/L)') }}" value="{{ old('name') }}" required autofocus>
-
-                            @if ($errors->has('name'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('name') }}</strong>
-                            </span>
-                            @endif
-                        </div>
-
-                        <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4">
-                            <label class="form-control-label" for="input-name">{{ __('Systolic Blood Pressure (mmHg)') }}</label>
-                            <input type="text" name="blood_pressure" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Blood Pressure (mmHg)') }}" value="{{ old('name') }}" required autofocus>
-
-                            @if ($errors->has('name'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('name') }}</strong>
-                            </span>
-                            @endif
-                        </div>
-
-
-
-                        <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4 ">
-                            <label class="form-control-label" for="input-name">{{ __('Treatment') }}</label>
-                            {{-- <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Weight') }}" value="{{ old('name') }}" required autofocus> --}}
-
-                            <div class="col-auto row">
-                                <div class="custom-control custom-radio mb-3 col-md-3">
-                                    <input name="treatment" value="1" class="custom-control-input" id="customRadio3" checked="" type="radio">
-                                    <label class="custom-control-label" for="customRadio3">Yes</label>
-                                </div>
-                                <div class="custom-control custom-radio mb-3 col-md-3">
-                                    <input name="treatment" value="0" class="custom-control-input" id="customRadio4" type="radio">
-                                    <label class="custom-control-label" for="customRadio4">No</label>
-                                </div>
-
-                            </div>
-                        </div>
-
-
-
-
-                        <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4">
-                            <label class="form-control-label" for="input-name">{{ __('Total Cholesterol (mg/dL)') }}</label>
-                            <input type="text" name="total_cholesterol" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Cholesterol (mmol/L)') }}" value="{{ old('name') }}" required autofocus>
-
-                            @if ($errors->has('name'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('name') }}</strong>
-                            </span>
-                            @endif
-                        </div>
-
-                        <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4 ">
-                            <label class="form-control-label" for="input-name">{{ __('Diabetes') }}</label>
-                            {{-- <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Weight') }}" value="{{ old('name') }}" required autofocus> --}}
-
-                            <div class="col-auto row">
-                                <div class="custom-control custom-radio mb-3 col-md-3">
-                                    <input name="diabetes" value="1" class="custom-control-input" id="customRadio5" checked="" type="radio">
-                                    <label class="custom-control-label" for="customRadio5">Yes</label>
-                                </div>
-                                <div class="custom-control custom-radio mb-3 col-md-3">
-                                    <input name="diabetes" value="0" class="custom-control-input" id="customRadio6" type="radio">
-                                    <label class="custom-control-label" for="customRadio6">No</label>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4 ">
-                            <label class="form-control-label" for="input-name">{{ __('Smoker') }}</label>
-                            {{-- <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Weight') }}" value="{{ old('name') }}" required autofocus> --}}
-
-                            <div class="col-auto row">
-                                <div class="custom-control custom-radio mb-3 col-md-3">
-                                    <input name="smoker" value="1" class="custom-control-input" id="customRadio7" type="radio">
-                                    <label class="custom-control-label" for="customRadio7">Yes</label>
-                                </div>
-                                <div class="custom-control custom-radio mb-3 col-md-3">
-                                    <input name="smoker" value="0" class="custom-control-input" id="customRadio8" type="radio">
-                                    <label class="custom-control-label" for="customRadio8">No</label>
-                                </div>
-
-                            </div>
-                        </div>
-
-
-
-
-                        <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4">
-                            <label class="form-control-label" for="input-name">{{ __('Family History') }}</label>
-                            <textarea name="family_history" class="form-control form-control-alternative" rows="3" placeholder="Write a brief about family history..."></textarea>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4">
-                            <label class="form-control-label" for="input-name">{{ __('Medical History') }}</label>
-                            <textarea name="medical_history" class="form-control form-control-alternative" rows="3" placeholder="Write a brief about medical history..."></textarea>
                         </div>
                         <div class="col-md-12">
                             <div class="text-center">
@@ -296,3 +297,28 @@
 @include('layouts.footers.auth')
 </div>
 @endsection
+
+@push('js')
+<script>
+    $("#role").change(function (e) {
+        $role = this.value;
+        if ($role == 'Patient') {
+            $("#health_information").css('display', 'block')
+        } else {
+            $("#health_information").css('display', 'none')
+        }
+    });
+
+    $("#company_id").change(function (e) {
+        $.ajax({
+            type: "GET",
+            url: "../api/rigs-by-company/" + this.id,
+            dataType: "json",
+            success: function (response) {
+                
+            }
+        });
+        
+    });
+</script>
+@endpush
