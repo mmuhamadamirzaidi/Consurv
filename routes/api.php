@@ -17,4 +17,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('rigs-by-company', 'RigController@rigsByCompany');
+Route::get('rigs-by-company/{company_id}', 'RigController@rigsByCompany');

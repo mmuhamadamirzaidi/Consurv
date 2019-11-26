@@ -24,6 +24,8 @@ class HealthInformationObserver
         $risk_point_cvd = $this->getRiskPointCvd($healthInformation, $total_points);
         $risk_level = $this->getRiskLevel($risk_point_cvd);
 
+        $dispatcher = HealthInformation::getEventDispatcher();
+        HealthInformation::unsetEventDispatcher();
         $healthInformation->update([
             'risk_point_age' => $risk_point_age,
             'risk_point_hdlc' => $risk_point_hdlc,
@@ -35,6 +37,7 @@ class HealthInformationObserver
             'risk_point_cvd' => $risk_point_cvd,
             'risk_level' => $risk_level,
         ]);
+        HealthInformation::setEventDispatcher($dispatcher);
     }
 
     /**
@@ -55,7 +58,7 @@ class HealthInformationObserver
         $risk_point_cvd = $this->getRiskPointCvd($healthInformation, $total_points);
         $risk_level = $this->getRiskLevel($risk_point_cvd);
 
-        $healthInformation->update([
+        $data = [
             'risk_point_age' => $risk_point_age,
             'risk_point_hdlc' => $risk_point_hdlc,
             'risk_point_cholesterol' => $risk_point_cholesterol,
@@ -65,7 +68,12 @@ class HealthInformationObserver
             'total_points' => $total_points,
             'risk_point_cvd' => $risk_point_cvd,
             'risk_level' => $risk_level,
-        ]);
+        ];
+
+        $dispatcher = HealthInformation::getEventDispatcher();
+        HealthInformation::unsetEventDispatcher();
+        $healthInformation->update($data);
+        HealthInformation::setEventDispatcher($dispatcher);
     }
 
     /**

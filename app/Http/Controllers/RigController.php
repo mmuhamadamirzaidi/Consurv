@@ -89,6 +89,7 @@ class RigController extends Controller
 
         return response()->json([
             'rigs' => $rigs,
+            'company_id' => $request->company_id,
         ], 200);
     }
 }

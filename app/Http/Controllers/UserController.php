@@ -17,9 +17,14 @@ class UserController extends Controller
      * @param  \App\User  $model
      * @return \Illuminate\View\View
      */
-    public function index(User $model)
+    public function index()
     {
-        return view('users.index', ['users' => $model->paginate(15)]);
+        if (auth()->user()->is_admin) {
+            $users = User::latest()->paginate(20);
+        } else if (auth()->user()->is_doctor) {
+            $users = User::latest()->where('role', 'Patient')->paginate(20);
+        }
+        return view('users.index', ['users' => $users]);
     }
 
     /**
@@ -57,20 +62,22 @@ class UserController extends Controller
             'rig_id' => $request->rig_id,
         ]);
 
-        HealthInformation::create([
-            'patient_id' => $user->id,
-            'weight' => $request->weight,
-            'height' => $request->height,
-            'hdlc' => $request->hdlc,
-            'blood_pressure' => $request->blood_pressure,
-            'treatment' => $request->treatment,
-            'total_cholesterol' => $request->total_cholesterol,
-            'diabetes' => $request->diabetes,
-            'smoker' => $request->smoker,
-            'family_history' => $request->family_history,
-            'medical_history' => $request->medical_history,
-        ]);
-
+        if ($request->role == 'Patient') {
+            HealthInformation::create([
+                'patient_id' => $user->id,
+                'weight' => $request->weight,
+                'height' => $request->height,
+                'hdlc' => $request->hdlc,
+                'blood_pressure' => $request->blood_pressure,
+                'treatment' => $request->treatment,
+                'total_cholesterol' => $request->total_cholesterol,
+                'diabetes' => $request->diabetes,
+                'smoker' => $request->smoker,
+                'family_history' => $request->family_history,
+                'medical_history' => $request->medical_history,
+            ]);
+        }
+       
         return redirect()->route('user.index')->withStatus(__('User successfully created.'));
     }
 
@@ -99,8 +106,6 @@ class UserController extends Controller
         $dob = Carbon::createFromFormat('m/d/Y', $request->date_of_birth)->format('Y-m-d');
         $user->update([
             'name' => $request->name,
-            'email' => $request->email,
-            'role' => $request->role,
             'gender' => $request->gender,
             'phone_number' => $request->phone_number,
             'date_of_birth' => $dob,

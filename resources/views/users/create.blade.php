@@ -25,7 +25,7 @@
                         <div class="row">
                             <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4">
                                 <label class="form-control-label" for="input-name">{{ __('Name') }}</label>
-                                <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Name') }}" value="{{ old('name') }}" required autofocus>
+                                <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Name') }}" value="{{ old('name') }}">
 
                                 @if ($errors->has('name'))
                                 <span class="invalid-feedback" role="alert">
@@ -45,7 +45,7 @@
                             </div>
                             <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4">
                                 <label class="form-control-label" for="input-name">{{ __('Phone Number') }}</label>
-                                <input type="text" name="phone_number" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Phone Number') }}" value="{{ old('name') }}" required autofocus>
+                                <input type="text" name="phone_number" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Phone Number') }}" value="{{ old('name') }}">
 
                                 @if ($errors->has('name'))
                                 <span class="invalid-feedback" role="alert">
@@ -157,7 +157,7 @@
 
                                 <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4">
                                     <label class="form-control-label" for="input-name">{{ __('Weight (kg)') }}</label>
-                                    <input type="text" name="weight" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Weight (kg)') }}" value="{{ old('name') }}" required autofocus>
+                                    <input type="text" name="weight" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Weight (kg)') }}" value="{{ old('name') }}">
 
                                     @if ($errors->has('name'))
                                     <span class="invalid-feedback" role="alert">
@@ -168,7 +168,7 @@
 
                                 <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4">
                                     <label class="form-control-label" for="input-name">{{ __('Height (cm)') }}</label>
-                                    <input type="text" name="height" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Height (cm)') }}" value="{{ old('name') }}" required autofocus>
+                                    <input type="text" name="height" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Height (cm)') }}" value="{{ old('name') }}">
 
                                     @if ($errors->has('name'))
                                     <span class="invalid-feedback" role="alert">
@@ -181,7 +181,7 @@
 
                                 <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4">
                                     <label class="form-control-label" for="input-name">{{ __('HDL-C (mmol/L)') }}</label>
-                                    <input type="text" name="hdlc" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Cholesterol (mmol/L)') }}" value="{{ old('name') }}" required autofocus>
+                                    <input type="text" name="hdlc" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Cholesterol (mmol/L)') }}" value="{{ old('name') }}">
 
                                     @if ($errors->has('name'))
                                     <span class="invalid-feedback" role="alert">
@@ -192,7 +192,7 @@
 
                                 <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4">
                                     <label class="form-control-label" for="input-name">{{ __('Systolic Blood Pressure (mmHg)') }}</label>
-                                    <input type="text" name="blood_pressure" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Blood Pressure (mmHg)') }}" value="{{ old('name') }}" required autofocus>
+                                    <input type="text" name="blood_pressure" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Blood Pressure (mmHg)') }}" value="{{ old('name') }}">
 
                                     @if ($errors->has('name'))
                                     <span class="invalid-feedback" role="alert">
@@ -205,7 +205,7 @@
 
                                 <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4 ">
                                     <label class="form-control-label" for="input-name">{{ __('Treatment') }}</label>
-                                    {{-- <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Weight') }}" value="{{ old('name') }}" required autofocus> --}}
+                                    {{-- <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Weight') }}" value="{{ old('name') }}"> --}}
 
                                     <div class="col-auto row">
                                         <div class="custom-control custom-radio mb-3 col-md-3">
@@ -225,7 +225,7 @@
 
                                 <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4">
                                     <label class="form-control-label" for="input-name">{{ __('Total Cholesterol (mg/dL)') }}</label>
-                                    <input type="text" name="total_cholesterol" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Cholesterol (mmol/L)') }}" value="{{ old('name') }}" required autofocus>
+                                    <input type="text" name="total_cholesterol" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Cholesterol (mmol/L)') }}" value="{{ old('name') }}">
 
                                     @if ($errors->has('name'))
                                     <span class="invalid-feedback" role="alert">
@@ -236,7 +236,7 @@
 
                                 <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4 ">
                                     <label class="form-control-label" for="input-name">{{ __('Diabetes') }}</label>
-                                    {{-- <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Weight') }}" value="{{ old('name') }}" required autofocus> --}}
+                                    {{-- <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Weight') }}" value="{{ old('name') }}"> --}}
 
                                     <div class="col-auto row">
                                         <div class="custom-control custom-radio mb-3 col-md-3">
@@ -253,7 +253,7 @@
 
                                 <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4 ">
                                     <label class="form-control-label" for="input-name">{{ __('Smoker') }}</label>
-                                    {{-- <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Weight') }}" value="{{ old('name') }}" required autofocus> --}}
+                                    {{-- <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Weight') }}" value="{{ old('name') }}"> --}}
 
                                     <div class="col-auto row">
                                         <div class="custom-control custom-radio mb-3 col-md-3">
@@ -267,9 +267,6 @@
 
                                     </div>
                                 </div>
-
-
-
 
                                 <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4">
                                     <label class="form-control-label" for="input-name">{{ __('Family History') }}</label>
@@ -312,10 +309,18 @@
     $("#company_id").change(function (e) {
         $.ajax({
             type: "GET",
-            url: "../api/rigs-by-company/" + this.id,
+            url: "../api/rigs-by-company/" + this.value,
             dataType: "json",
             success: function (response) {
-                
+                console.log(response.rigs)
+                $("#rig_id").html("");
+                $("#rig_id").append(new Option("Select rig", ""));
+                response.rigs.forEach(rig => {
+                    $("#rig_id").append(new Option(rig.name, rig.id));
+                });
+            },
+            error: function(error) {
+                console.log(error)
             }
         });
         

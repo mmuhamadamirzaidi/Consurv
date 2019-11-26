@@ -18,8 +18,9 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <form method="post" action="{{ route('user.store') }}" autocomplete="off">
+                    <form method="post" action="{{ route('user.update', $user) }}" autocomplete="off">
                         @csrf
+                        @method('patch')
 
                         <h6 class="heading-small text-muted mb-4">{{ __('User information') }}</h6>
                         <div class="row">
@@ -86,38 +87,22 @@
                         </div> --}}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4">
-                            <label class="form-control-label" for="input-role">Company</label>
-                            <select name="role_id" id="input-role" class="form-control" placeholder="Company" required>
+                            <label class="form-control-label" for="company_id">Company</label>
+                            <select name="company_id" id="company_id" class="form-control" placeholder="Company" required>
                                 <option value="">Select company</option>
-                                <option value="1">Company A</option>
-                                <option value="2">Company B</option>
+                                @foreach ($companies as $company)
+                                <option {{ $company->id == $user->company_id ? 'selected' : '' }} value="{{ $company->id }}">{{ $company->name }}</option>
+                                @endforeach
                             </select>
 
                         </div>
 
                         <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4">
-                            <label class="form-control-label" for="input-role">Rig</label>
-                            <select name="role_id" id="input-role" class="form-control" placeholder="Rig" required>
+                            <label class="form-control-label" for="rig_id">Rig</label>
+                            <select name="rig_id" id="rig_id" class="form-control" placeholder="Rig" required>
                                 <option value="">Select rig</option>
-                                <option value="1">Rig A</option>
-                                <option value="2">Rig B</option>
-                                <option value="3">Rig B</option>
                             </select>
-                        </div>
-
-
-
-
-
-
-                        <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4">
-                            <label class="form-control-label" for="input-role">Role</label>
-                            <select name="role" id="input-role" class="form-control" placeholder="Role" required>
-                                <option value="">Select role</option>
-                                <option {{ $user->role == 'Admin' ? 'selected' : '' }} value="Admin">Administrator</option>
-                                <option {{ $user->role == 'Doctor' ? 'selected' : '' }} value="Doctor">Doctor</option>
-                                <option {{ $user->role == 'Patient' ? 'selected' : '' }} value="Patient">Patient</option>
-                            </select>
+                            <input type="hidden" name="selected_rig_id" id="selected_rig_id" value="{{ $user->rig_id }}">
                         </div>
 
                         @if ($user->is_patient)
@@ -275,10 +260,10 @@
                             <h5>Systolic Blood Pressure Risk Point : {{ optional($user->healthInformation)->risk_point_blood_pressure }}</h5>
                             <h5>Diabetes Risk Point : {{ optional($user->healthInformation)->risk_point_diabetes }}</h5>
                             <h5>Smoker Risk Point : {{ optional($user->healthInformation)->risk_point_smoker }}</h5>
-                            <t5>Total Point: {{ optional($user->healthInformation)->total_points }}</h5>
-                            <t5>CVD Risk Point: {{ optional($user->healthInformation)->risk_point_cvd }}</h5>
-                            <t5>Risk Level: {{ optional($user->healthInformation)->risk_level_text }}</h5>
-                            
+                            <h5>Total Point: {{ optional($user->healthInformation)->total_points }}</h5>
+                            <h5>CVD Risk Point: {{ optional($user->healthInformation)->risk_point_cvd }}</h5>
+                            <h5>Risk Level: {{ optional($user->healthInformation)->risk_level_text }}</h5>
+
 
                         </div>
                         @endif
@@ -297,3 +282,31 @@
 @include('layouts.footers.auth')
 </div>
 @endsection
+
+@push('js')
+<script>
+    $("#company_id").change(function (e) {
+        $.ajax({
+            type: "GET",
+            url: "../../api/rigs-by-company/" + this.value,
+            dataType: "json",
+            success: function (response) {
+                console.log(response.rigs)
+                $("#rig_id").html("");
+                $("#rig_id").append(new Option("Select rig", ""));
+                response.rigs.forEach(rig => {
+                    $("#rig_id").append(new Option(rig.name, rig.id));
+                });
+
+                $("#rig_id option[value="+$("#selected_rig_id").val()+"]").prop('selected', true);
+            },
+            error: function (error) {
+                console.log(error)
+            }
+        });
+    });
+    
+    // $("#rig_id option[value=1]").prop('selected', true);
+    $("#company_id").trigger('change');
+</script>
+@endpush
