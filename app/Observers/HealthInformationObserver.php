@@ -14,30 +14,7 @@ class HealthInformationObserver
      */
     public function created(HealthInformation $healthInformation)
     {
-        $risk_point_age = $this->getRiskPointAge($healthInformation);
-        $risk_point_hdlc = $this->getRiskPointHdlc($healthInformation->hldc);
-        $risk_point_cholesterol = $this->getRiskPointCholesterol($healthInformation);
-        $risk_point_blood_pressure = $this->getRiskPointBloodPressure($healthInformation);
-        $risk_point_diabetes = $this->getRiskPointDiabetes($healthInformation);
-        $risk_point_smoker = $this->getRiskPointSmoker($healthInformation);
-        $total_points = $risk_point_age + $risk_point_hdlc + $risk_point_cholesterol + $risk_point_blood_pressure + $risk_point_diabetes + $risk_point_smoker;
-        $risk_point_cvd = $this->getRiskPointCvd($healthInformation, $total_points);
-        $risk_level = $this->getRiskLevel($risk_point_cvd);
-
-        $dispatcher = HealthInformation::getEventDispatcher();
-        HealthInformation::unsetEventDispatcher();
-        $healthInformation->update([
-            'risk_point_age' => $risk_point_age,
-            'risk_point_hdlc' => $risk_point_hdlc,
-            'risk_point_cholesterol' => $risk_point_cholesterol,
-            'risk_point_blood_pressure' => $risk_point_blood_pressure,
-            'risk_point_diabetes' => $risk_point_diabetes,
-            'risk_point_smoker' => $risk_point_smoker,
-            'total_points' => $total_points,
-            'risk_point_cvd' => $risk_point_cvd,
-            'risk_level' => $risk_level,
-        ]);
-        HealthInformation::setEventDispatcher($dispatcher);
+        $this->calculatePoints($healthInformation);
     }
 
     /**
@@ -48,32 +25,7 @@ class HealthInformationObserver
      */
     public function updated(HealthInformation $healthInformation)
     {
-        $risk_point_age = $this->getRiskPointAge($healthInformation);
-        $risk_point_hdlc = $this->getRiskPointHdlc($healthInformation->hldc);
-        $risk_point_cholesterol = $this->getRiskPointCholesterol($healthInformation);
-        $risk_point_blood_pressure = $this->getRiskPointBloodPressure($healthInformation);
-        $risk_point_diabetes = $this->getRiskPointDiabetes($healthInformation);
-        $risk_point_smoker = $this->getRiskPointSmoker($healthInformation);
-        $total_points = $risk_point_age + $risk_point_hdlc + $risk_point_cholesterol + $risk_point_blood_pressure + $risk_point_diabetes + $risk_point_smoker;
-        $risk_point_cvd = $this->getRiskPointCvd($healthInformation, $total_points);
-        $risk_level = $this->getRiskLevel($risk_point_cvd);
-
-        $data = [
-            'risk_point_age' => $risk_point_age,
-            'risk_point_hdlc' => $risk_point_hdlc,
-            'risk_point_cholesterol' => $risk_point_cholesterol,
-            'risk_point_blood_pressure' => $risk_point_blood_pressure,
-            'risk_point_diabetes' => $risk_point_diabetes,
-            'risk_point_smoker' => $risk_point_smoker,
-            'total_points' => $total_points,
-            'risk_point_cvd' => $risk_point_cvd,
-            'risk_level' => $risk_level,
-        ];
-
-        $dispatcher = HealthInformation::getEventDispatcher();
-        HealthInformation::unsetEventDispatcher();
-        $healthInformation->update($data);
-        HealthInformation::setEventDispatcher($dispatcher);
+        $this->calculatePoints($healthInformation);
     }
 
     /**
@@ -107,6 +59,36 @@ class HealthInformationObserver
     public function forceDeleted(HealthInformation $healthInformation)
     {
         //
+    }
+
+    public function calculatePoints(HealthInformation $healthInformation)
+    {
+        $risk_point_age = $this->getRiskPointAge($healthInformation);
+        $risk_point_hdlc = $this->getRiskPointHdlc($healthInformation->hldc);
+        $risk_point_cholesterol = $this->getRiskPointCholesterol($healthInformation);
+        $risk_point_blood_pressure = $this->getRiskPointBloodPressure($healthInformation);
+        $risk_point_diabetes = $this->getRiskPointDiabetes($healthInformation);
+        $risk_point_smoker = $this->getRiskPointSmoker($healthInformation);
+        $total_points = $risk_point_age + $risk_point_hdlc + $risk_point_cholesterol + $risk_point_blood_pressure + $risk_point_diabetes + $risk_point_smoker;
+        $risk_point_cvd = $this->getRiskPointCvd($healthInformation, $total_points);
+        $risk_level = $this->getRiskLevel($risk_point_cvd);
+        $heart_age = $this->getHeartAge($healthInformation, $total_points);
+
+        $dispatcher = HealthInformation::getEventDispatcher();
+        HealthInformation::unsetEventDispatcher();
+        $healthInformation->update([
+            'risk_point_age' => $risk_point_age,
+            'risk_point_hdlc' => $risk_point_hdlc,
+            'risk_point_cholesterol' => $risk_point_cholesterol,
+            'risk_point_blood_pressure' => $risk_point_blood_pressure,
+            'risk_point_diabetes' => $risk_point_diabetes,
+            'risk_point_smoker' => $risk_point_smoker,
+            'total_points' => $total_points,
+            'risk_point_cvd' => $risk_point_cvd,
+            'risk_level' => $risk_level,
+            'heart_age' => $heart_age,
+        ]);
+        HealthInformation::setEventDispatcher($dispatcher);
     }
 
     public function getRiskPointAge(HealthInformation $healthInformation)
@@ -432,6 +414,83 @@ class HealthInformationObserver
             return 2;
         } else {
             return 3;
+        }
+    }
+
+    public function getHeartAge($healthInformation, $total_point)
+    {
+        if ($healthInformation->patient->is_male) {
+            if ($total_point <= 0) {
+                return 30;
+            } else if ($total_point == 1) {
+                return 32;
+            } else if ($total_point == 2) {
+                return 34;
+            } else if ($total_point == 3) {
+                return 36;
+            } else if ($total_point == 4) {
+                return 38;
+            } else if ($total_point == 5) {
+                return 40;
+            } else if ($total_point == 6) {
+                return 42;
+            } else if ($total_point == 7) {
+                return 45;
+            } else if ($total_point == 8) {
+                return 48;
+            } else if ($total_point == 9) {
+                return 51;
+            } else if ($total_point == 10) {
+                return 54;
+            } else if ($total_point == 11) {
+                return 57;
+            } else if ($total_point == 12) {
+                return 60;
+            } else if ($total_point == 13) {
+                return 64;
+            } else if ($total_point == 14) {
+                return 68;
+            } else if ($total_point == 15) {
+                return 72;
+            } else if ($total_point == 16) {
+                return 76;
+            } else if ($total_point >= 17) {
+                return 80;
+            }
+        } else {
+            if ($total_point < 1) {
+                return 30;
+            } else if ($total_point == 1) {
+                return 31;
+            } else if ($total_point == 2) {
+                return 34;
+            } else if ($total_point == 3) {
+                return 36;
+            } else if ($total_point == 4) {
+                return 39;
+            } else if ($total_point == 5) {
+                return 42;
+            } else if ($total_point == 6) {
+                return 45;
+            } else if ($total_point == 7) {
+                return 48;
+            } else if ($total_point == 8) {
+                return 51;
+            } else if ($total_point == 9) {
+                return 55;
+            } else if ($total_point == 10) {
+                return 59;
+            } else if ($total_point == 11) {
+                return 64;
+            } else if ($total_point == 12) {
+                return 68;
+            } else if ($total_point == 13) {
+                return 73;
+            } else if ($total_point == 14) {
+                return 79;
+            } else if ($total_point >= 15) {
+                return 80;
+            }
         }
     }
 }
