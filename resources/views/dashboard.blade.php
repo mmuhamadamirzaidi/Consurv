@@ -24,11 +24,6 @@
                                     </div>
                                 </div>
                             </div>
-                            
-                            <p class="mt-3 mb-0 text-sm">
-                                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                                <span class="text-nowrap">Since last month</span>
-                            </p>
                         </div>
                     </a>
                 </div>
@@ -69,15 +64,9 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <p class="mt-3 mb-0 text-sm">
-                                <span class="text-warning mr-2"><i class="fa fa-arrow-down"></i> 3.48%</span>
-                                <span class="text-nowrap">Since last month</span>
-                            </p>
                         </div>
                     </a>
                 </div>
-
             </div>
         </div>
     </div>
