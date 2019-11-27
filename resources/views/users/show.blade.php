@@ -1,7 +1,7 @@
 @extends('layouts.app', ['title' => __('User Management')])
 
 @section('content')
-@include('users.partials.header', ['title' => __('Edit User')])
+@include('users.partials.header', ['title' => __('User Details')])
 
 <div class="container-fluid mt--7">
     <div class="row">
@@ -13,7 +13,7 @@
                             <h3 class="mb-0">{{ __('User Management') }}</h3>
                         </div>
                         <div class="col-4 text-right">
-                            <a href="{{ route('user.index') }}" class="btn btn-sm btn-primary">{{ __('Back to list') }}</a>
+                            <a href="{{ route('user.edit', $user) }}" class="btn btn-sm btn-primary">{{ __('Edit User') }}</a>
                         </div>
                     </div>
                 </div>
@@ -283,11 +283,6 @@
 
                     </div>
                     @endif
-                    <div class="col-md-12">
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-success mt-4">{{ __('Save') }}</button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
