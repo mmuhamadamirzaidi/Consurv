@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	return redirect()->route('login');
 });
 Auth::routes();
 
@@ -26,5 +26,11 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::resource('company', 'CompanyController');
 	Route::resource('rig', 'RigController');
+	Route::group([
+		'prefix' => 'statistic', 'as' => 'statistic.'
+	], function () {
+		Route::get('risk-level', 'StatisticController@riskLevel')->name('risk-level');	
+	});
+	
 });
 
