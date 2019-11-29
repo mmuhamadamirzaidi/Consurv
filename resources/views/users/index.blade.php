@@ -11,6 +11,7 @@
     <div class="row">
         <div class="col">
             <div class="card shadow">
+
                 <div class="card-header border-0">
                     <div class="row align-items-center">
                         <div class="col-8">
@@ -35,6 +36,7 @@
 
                 <div class="table-responsive">
                     <table class="table align-items-center table-flush">
+
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col">{{ __('Name') }}</th>
@@ -51,6 +53,7 @@
                                 <th scope="col"></th>
                             </tr>
                         </thead>
+
                         <tbody>
                             @foreach ($users as $user)
                             <tr>
@@ -66,6 +69,7 @@
                                 <td>{{ $user->healthInformation->risk_level_text }}</td>
                                 @endif
                                 <td>{{ $user->created_at->format('d/m/Y H:i') }}</td>
+                                
                                 <td class="text-right">
                                     <div class="dropdown">
                                         <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -91,17 +95,21 @@
                             </tr>
                             @endforeach
                         </tbody>
+
                     </table>
                 </div>
+
                 <div class="card-footer py-4">
                     <nav class="d-flex justify-content-end" aria-label="...">
                         {{ $users->links() }}
                     </nav>
                 </div>
+
             </div>
         </div>
     </div>
 
-    @include('layouts.footers.auth')
+@include('layouts.footers.auth')
 </div>
+
 @endsection
