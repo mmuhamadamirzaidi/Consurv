@@ -3,8 +3,8 @@
 @section('content')
     @include('users.partials.header', [
         'title' => __('Hello') . ' '. auth()->user()->name,
-        'description' => __('This is your profile page. You can see the progress you\'ve made with your work and manage your projects or assigned tasks'),
-        'class' => 'col-lg-7'
+        'description' => __('This is the profile page. You can see the informations you\'ve add to the profile and manage the related informations'),
+        'class' => 'col-lg-12'
     ])   
 
     <div class="container-fluid mt--7">

@@ -1,20 +1,20 @@
 @extends('layouts.app', ['title' => __('User Management')])
 
 @section('content')
-<div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
-    <div class="container-fluid">
+@include('users.partials.header', [
+        'title' => __('User Management'),
+        'description' => __('This is user management page. You can see the user lists you\'ve add and manage the users'),
+        'class' => 'col-lg-12'
+    ])
 
-    </div>
-</div>
-
-<div class="container-fluid mt--9">
+<div class="container-fluid mt--7">
     <div class="row">
         <div class="col">
             <div class="card shadow">
                 <div class="card-header border-0">
                     <div class="row align-items-center">
                         <div class="col-8">
-                            <h3 class="mb-0">{{ __('Users') }}</h3>
+                            <h3 class="mb-0">{{ __('User Lists') }}</h3>
                         </div>
                         <div class="col-4 text-right">
                             <a href="{{ route('user.create') }}" class="btn btn-sm btn-primary">{{ __('Add user') }}</a>
