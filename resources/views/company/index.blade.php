@@ -45,6 +45,7 @@
                                     <th scope="col">{{ __('Company Address') }}</th>
                                     <th scope="col">{{ __('Total Rig') }}</th>
                                     <th scope="col">{{ __('Creation Date') }}</th>
+                                    <th scope="col"></th>
                                 </tr>
                             </thead>
     
