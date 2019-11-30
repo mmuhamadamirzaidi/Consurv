@@ -45,9 +45,11 @@
                                 @if (auth()->user()->is_admin)
                                 <th>Role</th>
                                 @endif
+                                
                                 @if (auth()->user()->is_doctor)
                                 <th>Risk Level</th>
                                 @endif
+
                                 <th scope="col">{{ __('Creation Date') }}</th>
 
                                 <th scope="col"></th>
@@ -58,6 +60,7 @@
                             @foreach ($users as $user)
                             <tr>
                                 <td>{{ $user->name }}</td>
+
                                 <td>
                                     <a href="mailto:{{ $user->email }}">{{ $user->email }}</a>
                                 </td>
@@ -65,9 +68,11 @@
                                 @if (auth()->user()->is_admin)
                                 <td>{{ $user->role }}</td>
                                 @endif
+
                                 @if (auth()->user()->is_doctor)
                                 <td>{{ $user->healthInformation->risk_level_text }}</td>
                                 @endif
+                                
                                 <td>{{ $user->created_at->format('d/m/Y H:i') }}</td>
                                 
                                 <td class="text-right">
@@ -99,11 +104,11 @@
                     </table>
                 </div>
 
-                <div class="card-footer py-4">
+                {{-- <div class="card-footer py-4">
                     <nav class="d-flex justify-content-end" aria-label="...">
                         {{ $users->links() }}
                     </nav>
-                </div>
+                </div> --}}
 
             </div>
         </div>
