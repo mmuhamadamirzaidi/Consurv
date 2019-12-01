@@ -45,6 +45,7 @@
                                     <th scope="col">{{ __('Company Address') }}</th>
                                     <th scope="col">{{ __('Total Rig') }}</th>
                                     <th scope="col">{{ __('Creation Date') }}</th>
+                                    <th scope="col"></th>
                                 </tr>
                             </thead>
     
@@ -55,7 +56,7 @@
                                     <td>{{ $company->rigs->count() }}</td>
                                     <td>{{ $company->created_at->format('H:i, j F Y') }}</td>
 
-                                    {{-- <td class="text-right">
+                                    <td class="text-right">
                                         <div class="dropdown">
                                             <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <i class="fas fa-ellipsis-v"></i>
@@ -67,19 +68,19 @@
                                                     @csrf
                                                     @method('delete')
     
-                                                    <a class="dropdown-item" href="{{ route('company.show', $company) }}">{{ __('View') }}</a>
+                                                    <a class="dropdown-item" href="{{ route('company.show', $company) }}">{{ __('Edit') }}</a>
                                                     <button type="button" class="dropdown-item" onclick="confirm('{{ __("Are you sure you want to delete this company?") }}') ? this.parentElement.submit() : ''">
                                                         {{ __('Delete') }}
                                                     </button>
                                                 </form>
                                                 
-                                                @else
-                                                <a class="dropdown-item" href="{{ route('company.show', $company) }}">{{ __('View') }}</a>
+                                                {{-- @else
+                                                <a class="dropdown-item" href="{{ route('company.show', $company) }}">{{ __('View') }}</a> --}}
                                                 @endif
                                             </div>
 
                                         </div>
-                                    </td>  --}}
+                                    </td> 
                                  </tr>
 
                             </tbody>

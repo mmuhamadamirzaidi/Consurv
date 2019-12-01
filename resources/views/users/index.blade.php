@@ -14,10 +14,10 @@
 
                 <div class="card-header border-0">
                     <div class="row align-items-center">
-                        <div class="col-8">
+                        <div class="col-6">
                             <h3 class="mb-0">{{ __('User Lists') }}</h3>
                         </div>
-                        <div class="col-4 text-right">
+                        <div class="col-6 text-right">
                             <a href="{{ route('user.create') }}" class="btn btn-sm btn-primary">{{ __('Add user') }}</a>
                         </div>
                     </div>
