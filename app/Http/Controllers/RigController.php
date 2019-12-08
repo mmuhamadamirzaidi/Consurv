@@ -75,7 +75,11 @@ class RigController extends Controller
      */
     public function update(Request $request, Rig $rig)
     {
-        //
+        $rig->update([
+            'name' => $request->name,
+        ]);
+
+        return redirect()->route('company.show', $rig->company)->withSuccess('Rig name has been updated.');
     }
 
     /**
@@ -86,7 +90,9 @@ class RigController extends Controller
      */
     public function destroy(Rig $rig)
     {
-        //
+        $rig->delete();
+
+        return redirect()->back()->withSuccess('Rig has been deleted.');
     }
 
     public function rigsByCompany(Request $request)

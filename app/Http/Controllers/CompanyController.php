@@ -38,12 +38,12 @@ class CompanyController extends Controller
      */
     public function store(CompanyStore $request)
     {
-        Company::create([
+        $company = Company::create([
             'name' => $request->name,
             'address' => $request->address,
         ]);
 
-        return redirect()->route('company.index')->withStatus('Company has been added.');
+        return redirect()->route('company.show', $company)->withStatus('Company has been added.');
     }
 
     /**
@@ -78,7 +78,9 @@ class CompanyController extends Controller
      */
     public function update(Request $request, Company $company)
     {
-        //
+        $company->update($request->all());
+
+        return redirect()->back()->withSuccess('Company has been updated.');
     }
 
     /**
@@ -89,6 +91,9 @@ class CompanyController extends Controller
      */
     public function destroy(Company $company)
     {
-        //
+        $company->delete();
+        $company->rigs()->delete();
+
+        return redirect()->route('company.index')->withSuccess('Company has been deleted');
     }
 }
