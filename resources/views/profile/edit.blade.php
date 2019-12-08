@@ -3,8 +3,8 @@
 @section('content')
     @include('users.partials.header', [
         'title' => __('Hello') . ' '. auth()->user()->name,
-        'description' => __('This is your profile page. You can see the progress you\'ve made with your work and manage your projects or assigned tasks'),
-        'class' => 'col-lg-7'
+        'description' => __('This is the profile page. You can see the informations you\'ve add to the profile and manage the related informations'),
+        'class' => 'col-lg-12'
     ])   
 
     <div class="container-fluid mt--7">
@@ -15,7 +15,7 @@
                         <div class="col-lg-3 order-lg-2">
                             <div class="card-profile-image">
                                 <a href="#">
-                                    <img src="{{ asset('argon') }}/img/theme/team-4-800x800.jpg" class="rounded-circle">
+                                    <img src="{{ asset('argon') }}/img/theme/profile.png" class="rounded-circle">
                                 </a>
                             </div>
                         </div>

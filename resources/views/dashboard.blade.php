@@ -9,8 +9,8 @@
             <div class="row align-items-center justify-content-xl-between">
 
                 <div class="col-xl-4">
-                    <a href="{{ route('statistic.risk-level', ['level' => 'Low']) }}">
-                        <div class="card card-stats mb-4 mb-xl-0">
+                    <div class="card card-stats mb-4 mb-xl-0">
+                        <a href="{{ route('statistic.risk-level', ['level' => 'Low']) }}">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
@@ -23,9 +23,13 @@
                                         </div>
                                     </div>
                                 </div>
+                                <p class="mt-3 mb-0 text-sm">
+                                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                                    <span class="text-nowrap">Since last month</span>
+                                </p>
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                     </div>
                 </div>
 
                 <div class="col-xl-4">
@@ -43,14 +47,18 @@
                                         </div>
                                     </div>
                                 </div>
+                                <p class="mt-3 mb-0 text-sm">
+                                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                                    <span class="text-nowrap">Since last month</span>
+                                </p>
                             </div>
                         </a>
                     </div>
                 </div>
 
                 <div class="col-xl-4">
-                    <a href="{{ route('statistic.risk-level', ['level' => 'High']) }}">
-                        <div class="card card-stats mb-4 mb-xl-0">
+                    <div class="card card-stats mb-4 mb-xl-0">
+                        <a href="{{ route('statistic.risk-level', ['level' => 'High']) }}">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
@@ -63,10 +71,15 @@
                                         </div>
                                     </div>
                                 </div>
+                                <p class="mt-3 mb-0 text-sm">
+                                    <span class="text-warning mr-2"><i class="fa fa-arrow-down"></i> 3.48%</span>
+                                    <span class="text-nowrap">Since last month</span>
+                                </p>
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>

@@ -1,7 +1,11 @@
 @extends('layouts.app', ['title' => __('User Management')])
 
 @section('content')
-@include('users.partials.header', ['title' => __('Add User')])
+@include('users.partials.header', [
+        'title' => __('User Management'),
+        'description' => __('This is user management page. You can see the user lists you\'ve add and manage the users'),
+        'class' => 'col-lg-12'
+    ]) 
 
 <div class="container-fluid mt--7">
     <div class="row">
@@ -9,10 +13,10 @@
             <div class="card bg-secondary shadow">
                 <div class="card-header bg-white border-0">
                     <div class="row align-items-center">
-                        <div class="col-8">
-                            <h3 class="mb-0">{{ __('User Management') }}</h3>
+                        <div class="col-6">
+                            <h3 class="mb-0">{{ __('Add User') }}</h3>
                         </div>
-                        <div class="col-4 text-right">
+                        <div class="col-6 text-right">
                             <a href="{{ route('user.index') }}" class="btn btn-sm btn-primary">{{ __('Back to list') }}</a>
                         </div>
                     </div>
@@ -60,30 +64,13 @@
 
                             <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4">
                                 <label class="form-control-label" for="input-name">{{ __('Date Of Birth') }}</label>
-                                {{-- <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Phone Number') }}" value="{{ old('name') }}" required autofocus> --}}
                                 <div class="input-group input-group-alternative">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                                     </div>
                                     <input class="form-control datepicker" name="date_of_birth" placeholder="Select date" type="text">
-                                    {{-- value="06/20/2018" --}}
                                 </div>
-                                {{-- @if ($errors->has('name'))
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('name') }}</strong>
-                                </span>
-                                @endif --}}
                             </div>
-                            {{-- <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-6">
-                            <label class="form-control-label" for="input-name">{{ __('Company') }}</label>
-                            <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Company') }}" value="{{ old('name') }}" required autofocus>
-
-                            @if ($errors->has('name'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('name') }}</strong>
-                            </span>
-                            @endif
-                        </div> --}}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4">
                             <label class="form-control-label" for="company_id">Company</label>
@@ -101,11 +88,6 @@
                                 <option value="">Select Rig</option>
                             </select>
                         </div>
-
-
-
-
-
 
                         <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4">
                             <label class="form-control-label" for="role">Role</label>
@@ -140,7 +122,6 @@
 
                                 <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4 ">
                                     <label class="form-control-label" for="input-name">{{ __('Gender') }}</label>
-                                    {{-- <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Weight') }}" value="{{ old('name') }}" required autofocus> --}}
 
                                     <div class="col-auto row">
                                         <div class="custom-control custom-radio mb-3 col-md-3">
@@ -205,7 +186,6 @@
 
                                 <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4 ">
                                     <label class="form-control-label" for="input-name">{{ __('Treatment') }}</label>
-                                    {{-- <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Weight') }}" value="{{ old('name') }}"> --}}
 
                                     <div class="col-auto row">
                                         <div class="custom-control custom-radio mb-3 col-md-3">
@@ -236,7 +216,6 @@
 
                                 <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4 ">
                                     <label class="form-control-label" for="input-name">{{ __('Diabetes') }}</label>
-                                    {{-- <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Weight') }}" value="{{ old('name') }}"> --}}
 
                                     <div class="col-auto row">
                                         <div class="custom-control custom-radio mb-3 col-md-3">
@@ -253,7 +232,6 @@
 
                                 <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4 ">
                                     <label class="form-control-label" for="input-name">{{ __('Smoker') }}</label>
-                                    {{-- <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Weight') }}" value="{{ old('name') }}"> --}}
 
                                     <div class="col-auto row">
                                         <div class="custom-control custom-radio mb-3 col-md-3">
@@ -268,12 +246,12 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4">
+                                <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-12">
                                     <label class="form-control-label" for="input-name">{{ __('Family History') }}</label>
                                     <textarea name="family_history" class="form-control form-control-alternative" rows="3" placeholder="Write a brief about family history..."></textarea>
                                 </div>
 
-                                <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-4">
+                                <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-12">
                                     <label class="form-control-label" for="input-name">{{ __('Medical History') }}</label>
                                     <textarea name="medical_history" class="form-control form-control-alternative" rows="3" placeholder="Write a brief about medical history..."></textarea>
                                 </div>
