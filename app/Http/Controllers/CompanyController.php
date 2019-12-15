@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Rig;
+use App\User;
 use App\Company;
-use App\Http\Requests\CompanyStore;
 use Illuminate\Http\Request;
+use App\Http\Requests\CompanyStore;
 
 class CompanyController extends Controller
 {
@@ -54,8 +55,9 @@ class CompanyController extends Controller
      */
     public function show(Company $company)
     {
+        $patients = User::where('company_id', $company->id)->get();
         $rigs = Rig::where('company_id', $company->id)->paginate(20);
-        return view('company.show')->with(compact('company', 'rigs'));
+        return view('company.show')->with(compact('company', 'rigs', 'patients'));
     }
 
     /**
