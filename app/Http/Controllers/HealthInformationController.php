@@ -93,6 +93,8 @@ class HealthInformationController extends Controller
      */
     public function destroy(HealthInformation $healthInformation)
     {
-        //
+        $healthInformation->delete();
+
+        return redirect()->back()->withSuccess('History has been deleted.');
     }
 }

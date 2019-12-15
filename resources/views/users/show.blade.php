@@ -58,6 +58,7 @@
         </div>
     </div>
 
+    @if ($user->is_patient)
     <div class="row mt-5">
         <div class="col">
             <div class="card shadow">
@@ -88,6 +89,9 @@
                     @endif
                 </div>
 
+                
+                    
+                
                 <div class="table-responsive">
                     <table class="table align-items-center table-flush">
 
@@ -101,48 +105,49 @@
                         </thead>
 
                         <tbody>
+                            @if ($user->healthInformation)
+                                
+                            
                             <tr>
-                                <td>29/11/2019 07:13</td>
-                                <td>50</td>
-                                <td>Medium Risk Level</td>
+                                <td>{{ $user->healthInformation->created_at }}</td>
+                                <td>{{ $user->healthInformation->heart_age }}</td>
+                                <td>{{ $user->healthInformation->risk_level_text }}</td>
 
                                 <td class="text-right">
                                     <div class="dropdown">
                                         <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i class="fas fa-ellipsis-v"></i>
                                         </a>
-
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                             @if (auth()->user()->is_admin)
-                                            <form action="{{ route('user.destroy', $user) }}" method="post">
+                                            <a class="dropdown-item" href="{{ route('user.show', $user) }}">{{ __('View') }}</a>
+                                            <form action="{{ route('health-information.destroy', $user->healthInformation) }}" method="post">
                                                 @csrf
                                                 @method('delete')
-
-                                                <a class="dropdown-item" href="{{ route('user.show', $user) }}">{{ __('View') }}</a>
-
                                                 <button type="button" class="dropdown-item" onclick="confirm('{{ __("Are you sure you want to delete this history?") }}') ? this.parentElement.submit() : ''">
                                                     {{ __('Delete') }}
                                                 </button>
                                             </form>
-
                                             @else
                                             <a class="dropdown-item" href="{{ route('user.show', $user) }}">{{ __('View') }}</a>
                                             @endif
                                         </div>
-
                                     </div>
                                 </td>
                             </tr>
-
+                            @else
+                            <tr>
+                                <td colspan="4" class="text-center mt-3 mb-3">No record found</td>
+                            </tr>
+                            @endif
                         </tbody>
 
                     </table>
                 </div>
-
             </div>
         </div>
     </div>
-
+    @endif
 </div>
 
 @include('layouts.footers.auth')
