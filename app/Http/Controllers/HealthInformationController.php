@@ -46,7 +46,7 @@ class HealthInformationController extends Controller
      */
     public function show(HealthInformation $healthInformation)
     {
-        //
+        return view('health-information.show')->with(compact('healthInformation'));
     }
 
     /**

@@ -72,6 +72,10 @@
                     </a>
                 </li>
 
+                @if (auth()->user()->is_doctor || auth()->user()->is_admin)
+                    
+                
+
                 <li class="nav-item">
                     <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
                         <i class="ni ni-circle-08" style="color: #f4645f;"></i>
@@ -113,8 +117,8 @@
                             </li>
                         </ul>
                     </div>
-
                 </li>
+                @endif
 
             </ul>
         </div>
