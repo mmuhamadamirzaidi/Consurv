@@ -25,6 +25,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
 
 	Route::resource('company', 'CompanyController');
+	Route::resource('health-information', 'HealthInformationController');
 	Route::resource('rig', 'RigController');
 	Route::group([
 		'prefix' => 'statistic', 'as' => 'statistic.'

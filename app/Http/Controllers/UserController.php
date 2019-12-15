@@ -136,7 +136,7 @@ class UserController extends Controller
             ]);
         }
 
-        return redirect()->route('user.index')->withStatus(__('User successfully updated.'));
+        return redirect()->route('user.show', $user)->withStatus(__('User successfully updated.'));
     }
 
     public function show(User $user)
