@@ -6,6 +6,7 @@ use App\User;
 use App\Company;
 use Carbon\Carbon;
 use App\HealthInformation;
+use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
 
@@ -119,23 +120,6 @@ class UserController extends Controller
             ]);
         }
 
-        if ($user->is_patient) {
-            HealthInformation::updateOrCreate([
-                'patient_id' => $user->id,
-            ], [
-                'weight' => $request->weight,
-                'height' => $request->height,
-                'hdlc' => $request->hdlc,
-                'blood_pressure' => $request->blood_pressure,
-                'treatment' => $request->treatment,
-                'total_cholesterol' => $request->total_cholesterol,
-                'diabetes' => $request->diabetes,
-                'smoker' => $request->smoker,
-                'family_history' => $request->family_history,
-                'medical_history' => $request->medical_history,
-            ]);
-        }
-
         return redirect()->route('user.show', $user)->withStatus(__('User successfully updated.'));
     }
 
@@ -154,5 +138,18 @@ class UserController extends Controller
         $user->delete();
 
         return redirect()->route('user.index')->withStatus(__('User successfully deleted.'));
+    }
+
+    public function password(User $user, Request $request)
+    {
+        $request->validate([
+            'password' => 'required|confirmed|min:6',
+        ]);
+        
+        $user->update([
+            'password' => Hash::make($request->password),
+        ]);
+
+        return redirect()->route('user.show', $user)->withStatus(__('User\'s password successfully updated.'));
     }
 }
