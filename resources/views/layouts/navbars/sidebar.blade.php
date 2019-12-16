@@ -72,12 +72,25 @@
                     </a>
                 </li>
 
+                @if (auth()->user()->is_doctor || auth()->user()->is_admin)
+                    
+                
+
                 <li class="nav-item">
                     <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
                         <i class="ni ni-circle-08" style="color: #f4645f;"></i>
                         <span class="nav-link-text" style="color: #f4645f;">{{ __('Users') }}</span>
                     </a>
 
+                    <div class="collapse show" id="navbar-examples">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('user.create') }}">
+                                    {{ __('Add User') }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                     <div class="collapse show" id="navbar-examples">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
@@ -104,8 +117,8 @@
                             </li>
                         </ul>
                     </div>
-
                 </li>
+                @endif
 
             </ul>
         </div>

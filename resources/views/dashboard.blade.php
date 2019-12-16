@@ -105,6 +105,28 @@
                 </div>
             </div>
         </div>
+
+        {{--  <div class="col-xl-12">
+            <div class="card shadow">
+                <!-- Card header -->
+                <div class="card-header bg-transparent">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h6 class="text-uppercase text-muted ls-1 mb-1">Overview</h6>
+                            <h2 class="mb-0">Total Rigs</h2>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card body -->
+                <div class="card-body">
+                    <div class="chart">
+                        <!-- Chart wrapper -->
+                        <canvas id="chart-bar-stacked" class="chart-canvas"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>  --}}
+
     </div>
     
     <div class="row mt-5">

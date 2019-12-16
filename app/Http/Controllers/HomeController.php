@@ -23,11 +23,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $totalLow = HealthInformation::where('risk_level', 1)->count();
-        $totalIntermediate = HealthInformation::where('risk_level', 2)->count();
-        $totalHigh = HealthInformation::where('risk_level', 3)->count();
-        return view('dashboard')->with(compact([
-            'totalLow', 'totalIntermediate', 'totalHigh',
-        ]));
+        if (auth()->user()->is_patient) {
+            return view('dashboard.patient');
+        } else {
+            $totalLow = HealthInformation::where('risk_level', 1)->count();
+            $totalIntermediate = HealthInformation::where('risk_level', 2)->count();
+            $totalHigh = HealthInformation::where('risk_level', 3)->count();
+            return view('dashboard')->with(compact([
+                'totalLow', 'totalIntermediate', 'totalHigh',
+            ]));
+        }
+        
     }
 }
