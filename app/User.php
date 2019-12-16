@@ -66,4 +66,14 @@ class User extends Authenticatable
     {
         return $this->role == 'Patient';
     }
+
+    public function company()
+    {
+        return $this->belongsTo('App\Company')->withTrashed();
+    }
+
+    public function rig()
+    {
+        return $this->belongsTo('App\Rig')->withTrashed();
+    }
 }

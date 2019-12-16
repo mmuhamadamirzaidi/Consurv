@@ -68,21 +68,14 @@
                                                     {{ __('Delete') }}
                                                 </button>
                                             </form>
-
-                                            {{-- @else
-                                                <a class="dropdown-item" href="{{ route('company.show', $company) }}">{{ __('View') }}</a> --}}
                                             @endif
                                         </div>
-
                                     </div>
                                 </td>
                             </tr>
-
                         </tbody>
-
                     </table>
                 </div>
-
             </div>
         </div>
     </div>
@@ -149,12 +142,8 @@
                                                     {{ __('Delete') }}
                                                 </button>
                                             </form>
-
-                                            {{-- @else
-                                                    {{-- <a class="dropdown-item" href="{{ route('company.show', $company) }}">{{ __('View') }}</a> --}}
                                             @endif
                                         </div>
-
                                     </div>
                                 </td>
                             </tr>
@@ -166,10 +155,60 @@
                             @endforelse
 
                         </tbody>
-
                     </table>
                 </div>
+            </div>
+        </div>
+    </div>
 
+    <div class="row mt-5">
+        <div class="col">
+            <div class="card shadow">
+                <div class="card-header border-0">
+                    <div class="row align-items-center">
+                        <div class="col-6">
+                            <h3 class="mb-0">{{ __('Patient List') }}</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table align-items-center table-flush">
+
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">{{ __('Patient Name') }}</th>
+                                <th scope="col">{{ __('Creation Date') }}</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @forelse ($patients as $patient)
+                            <tr>
+                                <td>{{ $patient->name }}</td>
+                                <td>{{ $patient->created_at->format('H:i, j F Y') }}</td>
+
+                                <td class="text-right">
+                                    <div class="dropdown">
+                                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                            <a class="dropdown-item" href="{{ route('user.show', $patient) }}">{{ __('View') }}</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            @empty
+                            <tr>
+                                <td colspan="3">There are no patient in the list</td>
+                            </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

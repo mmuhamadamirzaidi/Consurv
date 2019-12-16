@@ -46,7 +46,7 @@ class HealthInformationController extends Controller
      */
     public function show(HealthInformation $healthInformation)
     {
-        //
+        return view('health-information.show')->with(compact('healthInformation'));
     }
 
     /**
@@ -57,7 +57,7 @@ class HealthInformationController extends Controller
      */
     public function edit(HealthInformation $healthInformation)
     {
-        //
+        return view('health-information.edit')->with(compact('healthInformation'));
     }
 
     /**
@@ -69,7 +69,20 @@ class HealthInformationController extends Controller
      */
     public function update(Request $request, HealthInformation $healthInformation)
     {
-        //
+        $healthInformation->update([
+            'weight' => $request->weight,
+            'height' => $request->height,
+            'hdlc' => $request->hdlc,
+            'blood_pressure' => $request->blood_pressure,
+            'treatment' => $request->treatment,
+            'total_cholesterol' => $request->total_cholesterol,
+            'diabetes' => $request->diabetes,
+            'smoker' => $request->smoker,
+            'family_history' => $request->family_history,
+            'medical_history' => $request->medical_history,
+        ]);
+
+        return redirect()->route('user.show', $healthInformation->patient)->withStatus(__('User successfully updated.'));
     }
 
     /**
@@ -80,6 +93,8 @@ class HealthInformationController extends Controller
      */
     public function destroy(HealthInformation $healthInformation)
     {
-        //
+        $healthInformation->delete();
+
+        return redirect()->back()->withSuccess('History has been deleted.');
     }
 }
