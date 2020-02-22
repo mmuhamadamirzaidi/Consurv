@@ -108,7 +108,7 @@
                         <span class="nav-link-text text-green">{{ __('Company') }}</span>
                     </a>
 
-                    <div class="collapse" id="company">
+                    <div class="collapse show" id="company">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('company.index') }}">
