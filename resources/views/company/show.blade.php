@@ -150,7 +150,7 @@
 
                             @empty
                             <tr>
-                                <td colspan="3">There are no rig list/td>
+                                <td colspan="3">There are no rig list </td>
                             </tr>
                             @endforelse
 
