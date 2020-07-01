@@ -15,7 +15,8 @@
                                 <div class="row">
                                     <div class="col">
                                         <h5 class="card-title text-uppercase text-muted mb-0 text-white">Total Low Risk Level</h5>
-                                        <span class="h2 font-weight-bold mb-0 text-white">{{ $totalLow }}</span>
+                                        {{-- <span class="h2 font-weight-bold mb-0 text-white">{{ $totalLow }}</span> --}}
+                                        <span class="h2 font-weight-bold mb-0 text-white">22</span>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-white text-success rounded-circle shadow">
@@ -24,8 +25,8 @@
                                     </div>
                                 </div>
                                 <p class="mt-3 mb-0 text-sm">
-                                    <span class="text-white mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                                    <span class="text-nowrap text-white">Since last month</span>
+                                    <span class="text-white mr-2"><i class="fa fa-arrow-up"></i> 13.48%</span>
+                                    <span class="text-nowrap text-white">Since yesterday</span>
                                 </p>
                             </div>
                         </a>
@@ -39,7 +40,8 @@
                                 <div class="row">
                                     <div class="col">
                                         <h5 class="card-title text-uppercase text-muted mb-0 text-white">Total Medium Risk Level</h5>
-                                        <span class="h2 font-weight-bold mb-0 text-white">{{ $totalIntermediate }}</span>
+                                        {{-- <span class="h2 font-weight-bold mb-0 text-white">{{ $totalIntermediate }}</span> --}}
+                                        <span class="h2 font-weight-bold mb-0 text-white">17</span>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-white text-warning rounded-circle shadow">
@@ -48,8 +50,8 @@
                                     </div>
                                 </div>
                                 <p class="mt-3 mb-0 text-sm">
-                                    <span class="text-white mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                                    <span class="text-nowrap text-white">Since last month</span>
+                                    <span class="text-white mr-2"><i class="fa fa-arrow-up"></i> 10.48%</span>
+                                    <span class="text-nowrap text-white">Since yesterday</span>
                                 </p>
                             </div>
                         </a>
@@ -63,7 +65,8 @@
                                 <div class="row">
                                     <div class="col">
                                         <h5 class="card-title text-uppercase text-muted mb-0 text-white">Total High Risk Level</h5>
-                                        <span class="h2 font-weight-bold mb-0 text-white">{{ $totalHigh }}</span>
+                                        {{-- <span class="h2 font-weight-bold mb-0 text-white">{{ $totalHigh }}</span> --}}
+                                        <span class="h2 font-weight-bold mb-0 text-white">1</span>
                                     </div>
                                     <div class="col-auto">
                                         <div class="icon icon-shape bg-white text-danger rounded-circle shadow">
@@ -87,6 +90,25 @@
 <div class="container-fluid mt--7">
     <div class="row">
 
+        {{-- <div class="col-xl-12">
+            <div class="card shadow">
+                <div class="card-header bg-transparent">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h6 class="text-uppercase text-muted ls-1 mb-1">Overview</h6>
+                            <h2 class="mb-0">Total Rigs</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <!-- Chart -->
+                    <div class="chart">
+                        <canvas id="chart-orders" class="chart-canvas"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div> --}}
+
         <div class="col-xl-12">
             <div class="card shadow">
                 <div class="card-header bg-transparent">
@@ -106,7 +128,9 @@
             </div>
         </div>
 
-        {{--  <div class="col-xl-12">
+        {{-- <div id="chartContainer" style="height: 370px; width: 100%;"></div> --}}
+
+         {{-- <div class="col-xl-12">
             <div class="card shadow">
                 <!-- Card header -->
                 <div class="card-header bg-transparent">
